@@ -1,4 +1,5 @@
 <?php include_once '../config.php'; ?>
+<?php include_once 'html_prepare.php'; ?>
 <?php
 $pdo = new PDO('mysql:host=localhost;dbname=blurry', 'root', '');
 
