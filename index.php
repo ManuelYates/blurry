@@ -1,11 +1,8 @@
-<?php include_once 'config-child.php'; ?>
-<?php if(!isset($_SESSION['userid'])) {
-  $_SESSION['userid'] = "";
-  $_SESSION['vorname'] = "";
-  $_SESSION['nachname'] ="";
-}
+<?php include_once 'config.php'; ?>
+<?php include_once 'pages/html_prepare.php'; ?>
+<?php include_once 'pages/session_check.php'; ?>
 
-?>
+
 <!DOCTYPE html>
 <html lang="de" dir="ltr">
   <head>
