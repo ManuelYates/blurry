@@ -20,7 +20,7 @@ if(isset($_GET['login'])) {
         $_SESSION['email'] = $user['email'];
         $_SESSION['created_at'] = $user['created_at'];
         $_SESSION['profile_img_path'] = $user['profile_img_path'];
-        $_SESSION['user_role'] = $user['user_role']
+        $_SESSION['user_role'] = $user['user_role'];
       die(header('location:'.$link_user_index));
     } else {
         $errorMessage = "E-Mail oder Passwort war ungültig<br>";
