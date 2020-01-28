@@ -1,7 +1,7 @@
-<?php include_once '../config-child.php'; ?>
-<?php
-$pdo = new PDO('mysql:host=localhost;dbname=blurry', 'root', '');
-?>
+<?php session_start(); ?>
+<?php include_once '../config.php'; ?>
+<?php include_once 'html_prepare.php'; ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -20,8 +20,7 @@ if(isset($_GET['register'])) {
     $email = $_POST['email'];
     $passwort = $_POST['passwort'];
     $passwort2 = $_POST['passwort2'];
-    $vorname = $_POST['vorname'];
-    $nachname = $_POST['nachname'];
+    $_SESSION['email'] = $_POST['email'];
     $user_role = 2;
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -53,11 +52,12 @@ if(isset($_GET['register'])) {
     if(!$error) {
         $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-        $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname, user_role) VALUES (:email, :passwort, :vorname, :nachname, :user_role)");
-        $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname'=> $nachname, 'user_role' => $user_role));
+        $statement = $pdo->prepare("INSERT INTO users (email, passwort, user_role) VALUES (:email, :passwort, :user_role)");
+        $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'user_role' => $user_role));
 
         if($result) {
-            echo 'Du wurdest erfolgreich registriert. <a href="'.$link_user_login.'">Zum Login</a>';
+            echo 'Du wurdest erfolgreich registriert. <a href="user_register_stage2.php">Zum Login</a>';
+            $_SESSION['register_stage'] = '1';
             $showFormular = false;
         } else {
             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
@@ -68,7 +68,7 @@ if(isset($_GET['register'])) {
 if($showFormular) {
 ?>
 <div id="form_register">
-<form action="user_register.php" method="post">
+<form action="?register=1" method="post">
 <table>
   <tr>
     <th>Email:</th><td><input type="email" size="40" maxlength="250" name="email"></td>
@@ -78,15 +78,6 @@ if($showFormular) {
   </tr>
   <tr>
     <th>Passwort wiederholen:</th><td><input type="password" size="40" maxlength="250" name="passwort2"></td>
-  </tr>
-  <tr>
-    <th>Vorname:</th><td><input type="text" size="40" maxlength="250" name="vorname"></td>
-  </tr>
-  <tr>
-    <th>Nachname:</th><td><input type="text" size="40" maxlength="250" name="nachname"></td>
-  </tr>
-  <tr>
-    <th>Profilbild hinzufügen:</th><td><input type="file" name="datei"></td>
   </tr>
 </table>
 <br>

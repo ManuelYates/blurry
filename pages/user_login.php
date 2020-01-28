@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <?php include_once '../config.php'; ?>
 <?php include_once 'html_prepare.php'; ?>
 <?php
@@ -16,6 +17,9 @@ if(isset($_GET['login'])) {
         $_SESSION['userid'] = $user['id'];
         $_SESSION['vorname'] = $user['vorname'];
         $_SESSION['nachname'] = $user['nachname'];
+        $_SESSION['email'] = $user['email'];
+        $_SESSION['created_at'] = $user['created_at'];
+        $_SESSION['profile_img_path'] = $user['profile_img_path'];
       die(header('location:'.$link_user_index));
     } else {
         $errorMessage = "E-Mail oder Passwort war ungültig<br>";

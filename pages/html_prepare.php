@@ -1,7 +1,20 @@
 <?php
+$filename = 'master.css';
+if (file_exists($filename)) {
+  /*Code für Hauptverzeichnis*/
+print 'Hauptverzeichnis wird verwendet';
+$link = '';
+}else {
+  /*Code für Pages Verzeichnis*/
+print 'Unterverzeichnis wird verwendet';
+$link ='../';
+}
+
 $font_import = '<link href="https://fonts.googleapis.com/css?family=Heebo:300&display=swap" rel="stylesheet"> ';
 $style_import = '<link rel="stylesheet" href="'.$link.'master.css">';
 $html_head = '<meta charset="utf-8"><title>BLURRY</title>'.$font_import.$style_import;
+
+
 
 /* Dateien verlinken*/
 $folder_pages = 'pages/';
