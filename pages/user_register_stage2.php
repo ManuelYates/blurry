@@ -19,27 +19,20 @@ if(isset($_GET['registerstwo'])) {
     $email = $_SESSION['email'];
     $vorname = $_POST['vorname'];
     $nachname = $_POST['nachname'];
-/*
-    $statement = $pdo->prepare("UPDATE users (vorname, nachname) SET (:vorname, :nachname) WHERE email = :email");
-    $result = $statement->execute(array('vorname' => $vorname, 'nachname' => $nachname));
-  */
 
     $sql = "UPDATE users SET vorname='$vorname', nachname='$nachname' WHERE email ='$email'";
 
-    // Prepare statement
     $stmt = $pdo->prepare($sql);
 
-    // execute the query
     $stmt->execute();
 
-    // echo a message to say the UPDATE succeeded
     echo $stmt->rowCount() . " records UPDATED successfully";
 
     if ($stmt->rowCount() > 0) {
-      echo 'Du wurdest erfolgreich registriert. <a href="user_register_stage2.php">Zum Login</a>';
+      echo 'Du wurdest erfolgreich registriert. <a href="user_register_stage3.php">Zum Login</a>';
       $_SESSION['register_stage'] = '2';
       $showFormular = false;
-      session_destroy();
+      
     }else {
       echo "Fehler";
     }

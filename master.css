@@ -117,6 +117,21 @@ h1 {
   text-align: center;
 }
 
+#content_profile_page table{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile_pic{
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.profile_pic img{
+  width: 300px;
+}
+
 #form_login{
   background-color: grey;
   margin-left: auto;

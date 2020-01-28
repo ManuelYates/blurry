@@ -17,6 +17,7 @@ $html_head = '<meta charset="utf-8"><title>BLURRY</title>'.$font_import.$style_i
 
 
 /* Dateien verlinken*/
+$stock_user_profile_img =$link.'stock_userimage.jpg';
 $folder_pages = 'pages/';
 $link_user_main = $link.$folder_pages.'main.php';
 $link_user_login = $link.$folder_pages.'user_login.php';
