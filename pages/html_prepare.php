@@ -37,17 +37,38 @@ $html_li_user_login = '<li><a href  ="'.$link_user_login.'">Login</a></li>';
 $html_li_testing_area = '<li><a href  ="'.$link_testing_area.'">Beta</a></li>';
 $html_li_user_logout = '<li><a href  ="'.$link_user_logout.'">Logout</a></li>';
 
-$html_navi = '
-<div id="navi">
-<ul>'.
-$html_li_user_main.
-$html_li_image_upload_ui.
-$html_li_index.
-$html_li_user_register.
-$html_li_user_login.
-$html_li_testing_area.
-$html_li_user_logout
-.'</ul></div>';
+if (isset ($_SESSION['user_role'])) {
+  if ($_SESSION['user_role'] == '2') {
+    $html_navi = '
+    <div id="navi">
+    <ul>'.
+    $html_li_user_main.
+    $html_li_image_upload_ui.
+    $html_li_index.
+    $html_li_user_logout
+    .'</ul></div>';
+  } elseif ($_SESSION['user_role'] == '3') {
+    $html_navi = '
+    <div id="navi">
+    <ul>'.
+    $html_li_user_main.
+    $html_li_image_upload_ui.
+    $html_li_index.
+    $html_li_testing_area.
+    $html_li_user_logout
+    .'</ul></div>';
+  }
+
+} else {
+  $html_navi = '
+  <div id="navi">
+  <ul>'.
+  $html_li_user_main.
+  $html_li_user_register.
+  $html_li_user_login.
+  '</ul></div>';
+}
+
 
 $html_logo = '<div id="logo"><img src="'.$link.'Blurry.png" alt=""></div>';
 
