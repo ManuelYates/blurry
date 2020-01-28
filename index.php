@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <?php include_once 'config.php'; ?>
 <?php include_once 'pages/html_prepare.php'; ?>
 <?php include_once 'pages/session_check.php'; ?>
