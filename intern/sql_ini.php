@@ -51,5 +51,5 @@ echo "Die neue Tabelle img_list wurde erstellt<br>";
 
 
 echo "Die benötigten Tabellen wurden erstellt!<br>";
-echo "<br> Hier gelangen Sie zurück zur Hauptseite";*/
+echo "<br> Hier gelangen Sie zurück zur Hauptseite";
  ?>
