@@ -1,4 +1,7 @@
+<?php session_start() ?>
 <?php include_once '../config.php'; ?>
+<?php include_once 'html_prepare.php'; ?>
+<?php include_once 'session_check.php'; ?>
 
 <!DOCTYPE html>
 
@@ -21,7 +24,7 @@
       </tr>
       <tr>
         <td><input type="file" name="datei"></td>
-        <td><?php print $username ?></td>
+        <td><?php print $_SESSION['vorname'] ?></td>
         <td><input type="text" name="img_name"></td>
       </tr>
       <br>

@@ -1,4 +1,7 @@
-<?php require_once '../config.php'; ?>
+<?php session_start() ?>
+<?php include_once '../config.php'; ?>
+<?php include_once 'html_prepare.php'; ?>
+<?php include_once 'session_check.php'; ?>
 <?php  if(!isset($_SESSION['userid'])) {
   die('Bitte zuerst <a href="'.$link_user_login.'">einloggen</a>');
 
@@ -13,7 +16,7 @@
 
 <body>
 <?php print $html_header ?>
-<h1>Willkommen <?php print $username ?></h1>
+<h1>Willkommen <?php print $_SESSION['vorname'] ?></h1>
 <div id="content_img">
     <?php
   $conn = mysqli_connect("localhost", "root", "", "blurry");
