@@ -14,7 +14,7 @@
 <?php print $html_header ?>
 
 <?php if (isset($_SESSION['vorname'])) {
-  print "<h1>Willkommen".$_SESSION['vorname']."</h1>";
+  print "<h1>Willkommen ".$_SESSION['vorname']."</h1>";
 } else {
   print "Sie sind nicht eingeloggt. <a href=".$link_user_login.">Login</a>";
 }
@@ -24,6 +24,7 @@
 
 <div id="content_img">
     <?php
+
   $conn = mysqli_connect("localhost", "root", "", "blurry");
   if ($conn->connect_error) {
      die("Connection failed: " . $conn->connect_error);
@@ -45,7 +46,6 @@
 
   $conn-> close();
    ?>
-
 
 <?php print $html_footer ?>
 </body>

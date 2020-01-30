@@ -1,6 +1,8 @@
+<?php session_start() ?>
+<?php include_once '../config.php'; ?>
+<?php include_once '../pages/html_prepare.php'; ?>
+<?php include_once '../pages/session_check.php'; ?>
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=test', 'root', '');
-
 $statement = 'DROP DATABASE blurry';
 $pdo->exec($statement);
 echo "Die alte DB wurde gelöscht<br>";
@@ -51,5 +53,5 @@ echo "Die neue Tabelle img_list wurde erstellt<br>";
 
 
 echo "Die benötigten Tabellen wurden erstellt!<br>";
-echo "<br> Hier gelangen Sie zurück zur Hauptseite";
+echo "<br> <a href=".$link_user_main.">Hier gelangen Sie zurück zur Hauptseite</a>";
  ?>

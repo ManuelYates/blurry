@@ -2,11 +2,11 @@
 $filename = 'master.css';
 if (file_exists($filename)) {
   /*Code für Hauptverzeichnis*/
-print 'Hauptverzeichnis wird verwendet';
+print 'Hauptverzeichnis wird verwendet<br>';
 $link = '';
 }else {
   /*Code für Pages Verzeichnis*/
-print 'Unterverzeichnis wird verwendet';
+print 'Unterverzeichnis wird verwendet<br>';
 $link ='../';
 }
 

@@ -49,11 +49,17 @@ font-style: italic;
 */
 /* CSS für die fertige Ansicht*/
 #content_img {
-  height: 700px;
+  height: 750px;
   overflow-y: scroll;
 }
 
+h1 {
+  font-size: 1.5em;
+}
 
+.img_list img{
+height: 75px;
+}
 
 .image_main {
   margin-top: 10px;
@@ -152,6 +158,9 @@ h1 {
 }
 
 #footer {
+  width: 1920px;
+  position: absolute;
+  bottom: 0px;
   background-color: silver;
 }
 

@@ -56,7 +56,7 @@ if(isset($_GET['register'])) {
         $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'user_role' => $user_role));
 
         if($result) {
-            echo 'Du wurdest erfolgreich registriert. <a href="user_register_stage2.php">Zum Login</a>';
+            echo '<a href="user_register_stage2.php">Stufe 2</a>';
             $_SESSION['register_stage'] = '1';
             $showFormular = false;
         } else {

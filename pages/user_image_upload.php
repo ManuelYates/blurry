@@ -3,7 +3,7 @@ session_start();
 include_once '../config.php';
 include_once 'html_prepare.php';
 
-$upload_folder = '../images/profile_pictures/'; //Das Upload-Verzeichnis
+$upload_folder = '../images/uploaded/profile_pictures/'; //Das Upload-Verzeichnis
 $filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
 $extension = strtolower(pathinfo($_FILES['datei']['name'], PATHINFO_EXTENSION));
 

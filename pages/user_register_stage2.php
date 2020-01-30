@@ -26,10 +26,10 @@ if(isset($_GET['registerstwo'])) {
 
     $stmt->execute();
 
-    echo $stmt->rowCount() . " records UPDATED successfully<br>";
+    echo $stmt->rowCount() . " Datensätze wurden geupdated<br>";
 
     if ($stmt->rowCount() > 0) {
-      echo 'Du wurdest erfolgreich registriert. <a href="user_register_stage3.php">Zum Login</a>';
+      echo '<a href="user_register_stage3.php">Stufe 3</a>';
       $_SESSION['register_stage'] = '2';
       $_SESSION['vorname'] = $_POST['vorname'];
       $_SESSION['nachname'] = $_POST['nachname'];
@@ -38,8 +38,6 @@ if(isset($_GET['registerstwo'])) {
     }else {
       echo "Fehler";
     }
-
-
 }
 
 if($showFormular) {
