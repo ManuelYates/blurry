@@ -48,6 +48,6 @@ $stmt->execute();
 
 
 move_uploaded_file($_FILES['datei']['tmp_name'], $new_path);
-echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a><br><button type="button" name="button"><a href="'.$link_user_main.'">Zurück zum Menü</a></button>';
-
+echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a><br><button type="button" name="button"><a href="'.$link_index.'">Zurück zum Menü</a></button>';
+session_destroy();
 ?>

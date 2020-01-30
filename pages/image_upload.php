@@ -1,4 +1,6 @@
 <?php
+session_start();
+include 'html_prepare.php';
 include_once '../config.php';
 $upload_folder = '../images/uploaded/'; //Das Upload-Verzeichnis
 $filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
@@ -38,38 +40,14 @@ if(file_exists($new_path)) { //Falls Datei existiert, hänge eine Zahl an den Da
  } while(file_exists($new_path));
 }
 
-if(!isset($_SESSION['userid'])) {
-    die('Bitte zuerst <a href="login.php">einloggen</a>');
-}
-$userid = $_SESSION['userid'];
-$vorname = $_SESSION['vorname'];
-$nachname = $_SESSION['nachname'];
-$username = $vorname." ".$nachname;
-$servername = "localhost";
-$serverusername = "root";
-$password = "";
-$dbname = "blurry";
-$creator = $username;
 $img_name = $_POST['img_name'];
-
-$conn = new mysqli($servername, $serverusername, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-   die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "INSERT INTO img_list (img_path , img_name , img_creator)
-VALUES ('$new_path', '$img_name' , '$creator' )";
-
-if ($conn->query($sql) === TRUE) {
-   echo "Das Bild <i>".$img_name."</i> von <b>".$creator."</b> wurde erfolgreich in die Datenbank eingetragen<br>";
-} else {
-  die("Es ist ein Fehler aufgetreten: " . $sql . "<br>" . $conn->error);
-}
+$email = $_SESSION['email'];
+$sql = "INSERT INTO img_list (img_path , img_name , img_creator) VALUES ('$new_path', '$img_name' , '$email' )";
+$stmt = $pdo->prepare($sql);
+$stmt->execute();
 
 
 move_uploaded_file($_FILES['datei']['tmp_name'], $new_path);
 echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a><br><button type="button" name="button"><a href="'.$link_user_main.'">Zurück zum Menü</a></button>';
 
-$conn->close();
 ?>

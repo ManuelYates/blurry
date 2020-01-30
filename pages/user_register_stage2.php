@@ -26,13 +26,15 @@ if(isset($_GET['registerstwo'])) {
 
     $stmt->execute();
 
-    echo $stmt->rowCount() . " records UPDATED successfully";
+    echo $stmt->rowCount() . " records UPDATED successfully<br>";
 
     if ($stmt->rowCount() > 0) {
       echo 'Du wurdest erfolgreich registriert. <a href="user_register_stage3.php">Zum Login</a>';
       $_SESSION['register_stage'] = '2';
+      $_SESSION['vorname'] = $_POST['vorname'];
+      $_SESSION['nachname'] = $_POST['nachname'];
       $showFormular = false;
-      
+
     }else {
       echo "Fehler";
     }
