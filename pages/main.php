@@ -12,7 +12,16 @@
 
 <body>
 <?php print $html_header ?>
-<h1>Willkommen <?php print $_SESSION['vorname'] ?></h1>
+
+<?php if (isset($_SESSION['vorname'])) {
+  print "<h1>Willkommen".$_SESSION['vorname']."</h1>";
+} else {
+  print "Sie sind nicht eingeloggt. <a href=".$link_user_login.">Login</a>";
+}
+
+?>
+
+
 <div id="content_img">
     <?php
   $conn = mysqli_connect("localhost", "root", "", "blurry");
