@@ -1,5 +1,4 @@
 <?php
-
 function SessionCheck()
 {
   if (isset($_SESSION['vorname'])) {
@@ -18,6 +17,8 @@ function AdminSessionCheck(){
 
 function ImageUpload()
 {
+
+
   $upload_folder = '../images/uploaded/'; //Das Upload-Verzeichnis
   $filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
   $extension = strtolower(pathinfo($_FILES['datei']['name'], PATHINFO_EXTENSION));
@@ -54,15 +55,18 @@ function ImageUpload()
    $new_path = $upload_folder.$filename.'_'.$id.'.'.$extension;
    $id++;
    } while(file_exists($new_path));
-  }
+ };
 
+  include_once 'config.php';
+  include_once 'html_prepare.php';
+  $pdo = new PDO('mysql:host=localhost;dbname=blurry', 'root', '');
   $img_name = $_POST['img_name'];
   $email = $_SESSION['email'];
   $sql = "INSERT INTO img_list (img_path , img_name , img_creator) VALUES ('$new_path', '$img_name' , '$email' )";
   $stmt = $pdo->prepare($sql);
   $stmt->execute();
   move_uploaded_file($_FILES['datei']['tmp_name'], $new_path);
-  echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a><br><button type="button" name="button"><a href="'.$link_user_main.'">Zurück zum Menü</a></button>';
+  echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a><br><button type="button" name="button"><a href="../index.php">Zurück zum Menü</a></button>';
 
 }
 

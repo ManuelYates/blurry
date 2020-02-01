@@ -4,6 +4,12 @@
 <?php include_once '../backend/functions.php'; ?>
 <?php echo SessionCheck(); ?>
 
+<?php
+  	if (isset($_GET['imageupload'])) {
+      echo ImageUpload();
+    }
+ ?>
+
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
@@ -16,7 +22,7 @@
 
 <body>
 
-  <form action="" method="post" enctype="multipart/form-data">
+  <form action="?imageupload=1" method="post" enctype="multipart/form-data">
     <table class="table_upload">
       <tr>
         <th>Datei</th>
