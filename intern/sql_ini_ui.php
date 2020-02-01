@@ -1,5 +1,12 @@
 <!DOCTYPE html>
-
+<?php session_start(); ?>
+<?php include_once '../backend/config.php'; ?>
+<?php include_once '../backend/html_prepare.php'; ?>
+<?php include_once '../backend/session_check.php'; ?>
+<?php if ($_SESSION['user_role'] != '3') {
+  echo "Sie besitzen nicht die benötigten Rechte um auf diese Seite zuzugreifen";
+  die();
+} ?>
 <html lang="de" dir="ltr">
   <head>
     <meta charset="utf-8">

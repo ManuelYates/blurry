@@ -1,7 +1,8 @@
 <?php session_start() ?>
-<?php include_once '../config.php'; ?>
-<?php include_once 'html_prepare.php'; ?>
-<?php include_once 'session_check.php'; ?>
+<?php include_once '../backend/config.php'; ?>
+<?php include_once '../backend/html_prepare.php'; ?>
+<?php include_once '../backend/functions.php'; ?>
+<?php echo SessionCheck(); ?>
 
 <!DOCTYPE html>
 
@@ -15,8 +16,8 @@
 
 <body>
 
-  <form action="image_upload.php" method="post" enctype="multipart/form-data">
-    <table .class="table_upload">
+  <form action="" method="post" enctype="multipart/form-data">
+    <table class="table_upload">
       <tr>
         <th>Datei</th>
         <th>Creator</th>
@@ -31,6 +32,7 @@
     </table>
     <input type="submit" value="Hochladen">
   </form>
+  <a href="<?php echo $link_index; ?>">Zurück zur Hauptseite</a>
 
 </body>
 
