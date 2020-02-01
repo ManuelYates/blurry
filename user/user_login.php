@@ -1,9 +1,7 @@
 <?php session_start() ?>
-<?php include_once '../config.php'; ?>
-<?php include_once 'html_prepare.php'; ?>
+<?php include_once '../backend/config.php'; ?>
+<?php include_once '../backend/html_prepare.php'; ?>
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=blurry', 'root', '');
-
 if(isset($_GET['login'])) {
     $email = $_POST['email'];
     $passwort = $_POST['passwort'];
