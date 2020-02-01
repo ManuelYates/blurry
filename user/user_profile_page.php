@@ -32,17 +32,17 @@
 
 $conn = mysqli_connect("localhost", "root", "", "blurry");
 if ($conn->connect_error) {
-   die("Connection failed: " . $conn->connect_error);
+    die("Connection failed: " . $conn->connect_error);
 }
 $email = $_SESSION['email'];
 $sql = "SELECT * from img_list WHERE img_creator = '$email'";
 $result = $conn-> query($sql);
-if($result-> num_rows > 0){
-  while ($row = $result-> fetch_assoc()){
-    echo "<tr><td><img src=".$row['img_path']."></td><td>".$row['img_name']."</td><td>".$row['img_creator']."</td><td>".$row['uploaded_at']."</td></tr>";
-  }
-}else {
-  echo "<h1>Kein Eintrag gefunden</h1>";
+if ($result-> num_rows > 0) {
+    while ($row = $result-> fetch_assoc()) {
+        echo "<tr><td><img src=".$row['img_path']."></td><td>".$row['img_name']."</td><td>".$row['img_creator']."</td><td>".$row['uploaded_at']."</td></tr>";
+    }
+} else {
+    echo "<h1>Kein Eintrag gefunden</h1>";
 }
 
 $conn-> close();

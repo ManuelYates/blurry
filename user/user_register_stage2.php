@@ -14,7 +14,7 @@
 <?php
 $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
 
-if(isset($_GET['registerstwo'])) {
+if (isset($_GET['registerstwo'])) {
     $error = false;
     $email = $_SESSION['email'];
     $vorname = $_POST['vorname'];
@@ -29,19 +29,18 @@ if(isset($_GET['registerstwo'])) {
     echo $stmt->rowCount() . " Datensätze wurden geupdated<br>";
 
     if ($stmt->rowCount() > 0) {
-      echo '<a href="user_register_stage3.php">Stufe 3</a>';
-      $_SESSION['register_stage'] = '2';
-      $_SESSION['vorname'] = $_POST['vorname'];
-      $_SESSION['nachname'] = $_POST['nachname'];
-      $showFormular = false;
-
-    }else {
-      echo "Fehler";
+        echo '<a href="user_register_stage3.php">Stufe 3</a>';
+        $_SESSION['register_stage'] = '2';
+        $_SESSION['vorname'] = $_POST['vorname'];
+        $_SESSION['nachname'] = $_POST['nachname'];
+        $showFormular = false;
+    } else {
+        echo "Fehler";
     }
 }
 
-if($showFormular) {
-?>
+if ($showFormular) {
+    ?>
 <div id="form_register">
 <form action="?registerstwo=1" method="post">
 <table>

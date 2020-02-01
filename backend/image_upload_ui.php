@@ -5,8 +5,8 @@
 <?php echo SessionCheck(); ?>
 
 <?php
-  	if (isset($_GET['imageupload'])) {
-      echo ImageUpload();
+    if (isset($_GET['imageupload'])) {
+        echo ImageUpload();
     }
  ?>
 
