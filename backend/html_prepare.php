@@ -1,13 +1,13 @@
 <?php
 $filename = 'index.php';
 if (file_exists($filename)) {
-  /*Code für Hauptverzeichnis*/
-print 'Hauptverzeichnis wird verwendet<br>';
-$link = '';
-}else {
-  /*Code für Pages Verzeichnis*/
-print 'Unterverzeichnis wird verwendet<br>';
-$link ='../';
+    /*Code für Hauptverzeichnis*/
+    print 'Hauptverzeichnis wird verwendet<br>';
+    $link = '';
+} else {
+    /*Code für Pages Verzeichnis*/
+    print 'Unterverzeichnis wird verwendet<br>';
+    $link ='../';
 }
 
 $font_import = '<link href="https://fonts.googleapis.com/css?family=Heebo:300&display=swap" rel="stylesheet"> ';
@@ -54,9 +54,9 @@ $html_li_admin = '<li><a href  ="'.$link_admin.'">Admin</a></li>';
 
 
 
-if (isset ($_SESSION['user_role'])) {
-  if ($_SESSION['user_role'] == '2') {
-    $html_navi = '
+if (isset($_SESSION['user_role'])) {
+    if ($_SESSION['user_role'] == '2') {
+        $html_navi = '
     <div id="navi">
     <ul>'.
     $html_li_user_img_scrollsearch.
@@ -64,8 +64,8 @@ if (isset ($_SESSION['user_role'])) {
     $html_li_index.
     $html_li_user_logout
     .'</ul></div>';
-  } elseif ($_SESSION['user_role'] == '3') {
-    $html_navi = '
+    } elseif ($_SESSION['user_role'] == '3') {
+        $html_navi = '
     <div id="navi">
     <ul>'.
     $html_li_user_img_scrollsearch.
@@ -75,10 +75,9 @@ if (isset ($_SESSION['user_role'])) {
     $html_li_user_logout.
     $html_li_admin
     .'</ul></div>';
-  }
-
+    }
 } else {
-  $html_navi = '
+    $html_navi = '
   <div id="navi">
   <ul>'.
   $html_li_user_img_scrollsearch.
@@ -92,8 +91,8 @@ $html_logo = '<div id="logo"><img src="'.$link.'images/blurry/blurry_logo.png" a
 
 $html_header = '<div id="header">'.$html_logo.$html_navi.'</div>';
 
-if (isset ($_SESSION['user_role'])) {
-  $html_footer = '</div>
+if (isset($_SESSION['user_role'])) {
+    $html_footer = '</div>
     <div id="footer">
       <table class="footer_menu_button" ><tr>
         <th><button type="button" name="button">Taste</button></th>
@@ -101,11 +100,6 @@ if (isset ($_SESSION['user_role'])) {
         <th><button type="button" name="button"><a href="'.$link_user_profile_page.'">Mein Profil</a></button></th>
       </tr></table>
     </div>';
-}else {
-  $html_footer = ' ';
+} else {
+    $html_footer = ' ';
 }
-
-
-
-
-?>
