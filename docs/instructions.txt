@@ -1,4 +1,13 @@
 Blurry Vers. 0.1
 
 Installations-Anleitung:
-Damit BLURRY auf ihrem System vernünftig funktioniert benötigen sie
+Damit BLURRY auf ihrem System vernünftig funktioniert benötigen Sie:
+
+XAMPP (Apache & MySQL an)
+einen Browser ihrer Wahl (Firefox oder Chrome wird empfohlen)
+
+Um das System auf ihrem Apache-Client funktionstüchtig zu bekommen müssen Sie als erstes
+"localhost/blurry/intern/sql_ini.php" aufrufen.
+
+Sollten das Erstellen der benötigten DB's und Tabellen erfolgreich sein, ist ihr System betriebsbereit.
+Viel Spaß mit Blurry
