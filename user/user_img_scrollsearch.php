@@ -29,7 +29,7 @@
   if ($conn->connect_error) {
       die("Connection failed: " . $conn->connect_error);
   }
-  $sql = "SELECT * from img_list";
+  $sql = "SELECT * from img_list WHERE img_type = 'wallpaper'";
   $result = $conn-> query($sql);
 
   if ($result-> num_rows > 0) {

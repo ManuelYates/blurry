@@ -3,10 +3,20 @@
 <?php include_once '../backend/config.php'; ?>
 <?php include_once '../backend/html_prepare.php'; ?>
 <?php include_once '../backend/session_check.php'; ?>
-<?php if ($_SESSION['user_role'] != '3') {
-    echo "Sie besitzen nicht die benötigten Rechte um auf diese Seite zuzugreifen";
-    die();
-} ?>
+<?php
+if (isset($_SESSION['user_role'])) {
+  if ($_SESSION['user_role'] != '3') {
+      echo "Sie besitzen nicht die benötigten Rechte um auf diese Seite zuzugreifen";
+      die();
+    }
+}else {
+  echo "Sie haben keine Zugriffrechte";
+  die();
+}
+
+ ?>
+
+
 <html lang="de" dir="ltr">
   <head>
     <meta charset="utf-8">

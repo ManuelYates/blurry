@@ -35,7 +35,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 $email = $_SESSION['email'];
-$sql = "SELECT * from img_list WHERE img_creator = '$email'";
+$sql = "SELECT * from img_list WHERE img_creator = '$email' AND img_type = 'wallpaper'";
 $result = $conn-> query($sql);
 if ($result-> num_rows > 0) {
     while ($row = $result-> fetch_assoc()) {

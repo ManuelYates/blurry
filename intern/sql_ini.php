@@ -49,6 +49,7 @@ img_id INT NOT NULL AUTO_INCREMENT,
 img_path VARCHAR(255),
 img_name VARCHAR(255),
 img_creator VARCHAR(255),
+img_type VARCHAR(255),
 uploaded_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (`img_id`)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;';
@@ -57,5 +58,5 @@ echo "Die neue Tabelle img_list wurde erstellt<br>";
 
 
 echo "Die benötigten Tabellen wurden erstellt!<br>";
-echo "<br> <a href=".$link_user_main.">Hier gelangen Sie zurück zur Hauptseite</a>";
+echo "<br> <a href=".$link_user_index.">Hier gelangen Sie zurück zur Hauptseite</a>";
  ?>

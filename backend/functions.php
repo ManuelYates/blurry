@@ -18,7 +18,13 @@ function AdminSessionCheck()
 
 function ImageUpload()
 {
-    $upload_folder = '../images/uploaded/'; //Das Upload-Verzeichnis
+    if ($_POST['img_type'] == 'wallpaper') {
+    $upload_folder = '../images/users/user_img/'; //Das Upload-Verzeichnis
+    }
+    if ($_POST['img_type'] == 'profile_picture') {
+    $upload_folder = '../images/users/user_img/'; //Das Upload-Verzeichnis
+    }
+
     $filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
     $extension = strtolower(pathinfo($_FILES['datei']['name'], PATHINFO_EXTENSION));
 
@@ -45,6 +51,7 @@ function ImageUpload()
   }
 
     //Pfad zum Upload
+
     $new_path = $upload_folder.$filename.'.'.$extension;
 
     //Neuer Dateiname falls die Datei bereits existiert
@@ -56,14 +63,33 @@ function ImageUpload()
       } while (file_exists($new_path));
   };
 
+  if ($_POST['img_type'] == 'wallpaper') {
     include_once 'config.php';
     include_once 'html_prepare.php';
     $pdo = new PDO('mysql:host=localhost;dbname=blurry', 'root', '');
     $img_name = $_POST['img_name'];
     $email = $_SESSION['email'];
-    $sql = "INSERT INTO img_list (img_path , img_name , img_creator) VALUES ('$new_path', '$img_name' , '$email' )";
+    $img_type = $_POST['img_type'];
+    $sql = "INSERT INTO img_list (img_path , img_name , img_creator, img_type) VALUES ('$new_path', '$img_name' , '$email' , '$img_type' )";
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
+  }
+
+  if ($_POST['img_type'] == 'profile_picture') {
+    include_once 'config.php';
+    include_once 'html_prepare.php';
+    $pdo = new PDO('mysql:host=localhost;dbname=blurry', 'root', '');
+    $email = $_SESSION['email'];
+    $img_name ='PB_'.$email;
+    $img_type = $_POST['img_type'];
+    $sql = "INSERT INTO img_list (img_path , img_name , img_creator, img_type) VALUES ('$new_path', '$img_name' , '$email' , '$img_type' )";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $sql = "UPDATE users SET profile_img_path='$new_path' WHERE email ='$email';";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    session_destroy();
+  }
     move_uploaded_file($_FILES['datei']['tmp_name'], $new_path);
     echo 'Bild erfolgreich hochgeladen: <a href="'.$new_path.'">'.$new_path.'</a><br><button type="button" name="button"><a href="../index.php">Zurück zum Menü</a></button>';
 }

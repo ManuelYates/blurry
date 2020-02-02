@@ -6,6 +6,7 @@
 
 <?php
     if (isset($_GET['imageupload'])) {
+      $_POST['img_type'] = 'wallpaper';
         echo ImageUpload();
     }
  ?>
