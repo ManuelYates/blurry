@@ -14,7 +14,7 @@
 <?php
 $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
 
-if (isset($_GET['registerstwo'])) {
+if (isset($_GET['registerext'])) {
     $error = false;
     $email = $_SESSION['email'];
     $vorname = $_POST['vorname'];
@@ -42,7 +42,7 @@ if (isset($_GET['registerstwo'])) {
 if ($showFormular) {
     ?>
 <div id="form_register">
-<form action="?registerstwo=1" method="post">
+<form action="?registerext=1" method="post">
 <table>
   <tr>
     <th>Email:</th><td><?php echo $_SESSION['email']; ?></td>
