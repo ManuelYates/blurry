@@ -11,3 +11,9 @@ Um das System auf ihrem Apache-Client funktionstüchtig zu bekommen müssen Sie 
 
 Sollten das Erstellen der benötigten DB's und Tabellen erfolgreich sein, ist ihr System betriebsbereit.
 Viel Spaß mit Blurry
+
+
+//TO DO
+-Profile Löschen
+-Bilder Löschen
+-Anstelle eines Profilbildes ein Stock nehmen

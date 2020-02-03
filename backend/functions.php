@@ -19,6 +19,8 @@ function AdminSessionCheck()
 
 function ImageUpload()
 {
+
+
     if ($_POST['img_type'] == 'wallpaper') {
     $upload_folder = '../images/users/user_xxx/user_img/'; //Das Upload-Verzeichnis
     }

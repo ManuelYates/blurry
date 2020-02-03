@@ -54,5 +54,5 @@ echo "Die neue Tabelle img_list wurde erstellt<br>";
 
 
 echo "Die benötigten Tabellen wurden erstellt!<br>";
-echo "<br> <a href=".$link_user_index.">Hier gelangen Sie zurück zur Hauptseite</a>";
+echo "<br> <a href=".$link_user_img_scrollsearch.">Hier gelangen Sie zurück zur Hauptseite</a>";
  ?>
