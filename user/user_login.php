@@ -1,6 +1,7 @@
 <?php session_start() ?>
 <?php include_once '../backend/config.php'; ?>
 <?php include_once '../backend/html_prepare.php'; ?>
+<?php include_once '../backend/functions.php'; ?>
 <?php
 if (isset($_GET['login'])) {
     $email = $_POST['email'];
