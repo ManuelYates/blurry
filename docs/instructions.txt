@@ -17,3 +17,13 @@ Viel Spaß mit Blurry
 -Profile Löschen
 -Bilder Löschen
 -Anstelle eines Profilbildes ein Stock nehmen
+-Index Posting Seite (news system)
+
+//BUG LIST
+
+-Registrierung: Nach Absenden des ersten Reg Form, keinen weiteren Link (header)
+-Statt Session mit $_Post arbeiten, bei Registrierung oder alles in ein Form schreiben
+-Nach dem Upload des Profilbildes nicht auf der Seite bleiben, entweder anzeigen lassen oder weiterleiten
+-Screen für Erfolg bei Registrierung
+-Tasten unten orientieren sich nicht zentriert
+-Image Upload hat kein Design
