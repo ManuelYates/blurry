@@ -21,7 +21,7 @@ Viel Spaß mit Blurry
 
 //BUG LIST
 
--Registrierung: Nach Absenden des ersten Reg Form, keinen weiteren Link (header)
+-Registrierung: Nach Absenden des Reg Form, keinen weiteren Link (header)
 -Statt Session mit $_Post arbeiten, bei Registrierung oder alles in ein Form schreiben
 -Nach dem Upload des Profilbildes nicht auf der Seite bleiben, entweder anzeigen lassen oder weiterleiten
 -Screen für Erfolg bei Registrierung
