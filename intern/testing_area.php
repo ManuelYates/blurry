@@ -1,1 +1,1 @@
-<?php echo "Hier gibt es nichts zusehen"; ?>
+<?php echo "Hier gibt es nichts zu sehen"; ?>

@@ -1,7 +1,7 @@
 <?php session_start() ?>
-<?php include_once '../backend/config.php'; ?>
-<?php include_once '../backend/html_prepare.php'; ?>
-<?php include_once '../backend/functions.php'; ?>
+<?php  require_once '../backend/config.php'; ?>
+<?php  require_once '../backend/html_prepare.php'; ?>
+<?php  require_once '../backend/functions.php'; ?>
 <?php echo SessionCheck(); ?>
 
 <?php

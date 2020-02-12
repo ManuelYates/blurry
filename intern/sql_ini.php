@@ -1,7 +1,7 @@
 <?php session_start() ?>
-<?php include_once '../backend/config.php'; ?>
-<?php include_once '../backend/html_prepare.php'; ?>
-<?php include_once '../backend/session_check.php'; ?>
+<?php require_once '../backend/config.php'; ?>
+<?php require_once '../backend/html_prepare.php'; ?>
+<?php require_once '../backend/session_check.php'; ?>
 <?php
 $statement = 'DROP DATABASE blurry';
 $pdo->exec($statement);
@@ -30,13 +30,13 @@ $pdo->exec($statement);
 echo "Die neue Tabelle users wurde erstellt<br>";
 
 $admin_email = 'admin@blurry.de';
-$admin_passwort ='root';
+$admin_passwort = 'root';
 $admin_vorname = 'Admin';
 $admin_nachname = 'Admin';
 $admin_user_role = 3;
 $passwort_hash = password_hash($admin_passwort, PASSWORD_DEFAULT);
 $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname, user_role) VALUES (:email, :passwort, :vorname, :nachname, :user_role)");
-$result = $statement->execute(array('email' => $admin_email, 'passwort' => $passwort_hash, 'vorname' => $admin_vorname, 'nachname'=> $admin_nachname, 'user_role' => $admin_user_role));
+$result = $statement->execute(array('email' => $admin_email, 'passwort' => $passwort_hash, 'vorname' => $admin_vorname, 'nachname' => $admin_nachname, 'user_role' => $admin_user_role));
 echo "Das Administratorkonto wurde erstellt<br>";
 
 $statement = 'CREATE TABLE img_list (
@@ -54,14 +54,19 @@ echo "Die neue Tabelle img_list wurde erstellt<br>";
 $statement = 'CREATE TABLE verslog (
 verslog_id INT NOT NULL AUTO_INCREMENT,
 verslog_title VARCHAR(255),
-verslog_text VARCHAR(255),
+verslog_text MEDIUMTEXT(),
 verslog_num INT NOT NULL,
 uploaded_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (`verslog_id`)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;';
 $pdo->exec($statement);
+$statement = null;
 echo "Die neue Tabelle verslog wurde erstellt<br>";
 
 echo "Die benötigten Tabellen wurden erstellt!<br>";
-echo "<br> <a href=".$link_user_img_scrollsearch.">Hier gelangen Sie zurück zur Hauptseite</a>";
- ?>
+$pdo = null;
+echo "Die Verbindung zu DB wurde geschlossen";
+session_destroy();
+echo "Sie wurden ausgeloggt";
+echo "<br> <a href=" . $link_user_img_scrollsearch . ">Hier gelangen Sie zurück zur Hauptseite</a>";
+?>

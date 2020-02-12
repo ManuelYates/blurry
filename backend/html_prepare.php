@@ -1,12 +1,12 @@
 <?php
 $filename = 'index.php';
 if (file_exists($filename)) {
-    /*Code für Hauptverzeichnis*/
-    print 'Hauptverzeichnis wird verwendet<br>';
+    
+    //print 'Hauptverzeichnis wird verwendet<br>';
     $link = '';
 } else {
-    /*Code für Pages Verzeichnis*/
-    print 'Unterverzeichnis wird verwendet<br>';
+    
+   //print 'Unterverzeichnis wird verwendet<br>';
     $link ='../';
 }
 

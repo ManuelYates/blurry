@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php session_start(); ?>
-<?php include_once '../backend/config.php'; ?>
-<?php include_once '../backend/html_prepare.php'; ?>
-<?php include_once '../backend/session_check.php'; ?>
+<?php  require_once '../backend/config.php'; ?>
+<?php  require_once '../backend/html_prepare.php'; ?>
+<?php  require_once '../backend/session_check.php'; ?>
 <?php
 if (isset($_SESSION['user_role'])) {
   if ($_SESSION['user_role'] != '3') {
