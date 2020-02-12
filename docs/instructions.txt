@@ -14,16 +14,16 @@ Viel Spaß mit Blurry
 
 
 //TO DO
--Profile Löschen
+-Admin User List (Löschung)
+-
 -Bilder Löschen
 -Anstelle eines Profilbildes ein Stock nehmen
--Index Posting Seite (news system)
+-Footer soll bei Desktop nicht anzeigen
 
 //BUG LIST
 
--Registrierung: Nach Absenden des Reg Form, keinen weiteren Link (header)
 -Statt Session mit $_Post arbeiten, bei Registrierung oder alles in ein Form schreiben
 -Nach dem Upload des Profilbildes nicht auf der Seite bleiben, entweder anzeigen lassen oder weiterleiten
 -Screen für Erfolg bei Registrierung
 -Tasten unten orientieren sich nicht zentriert
--Image Upload hat kein Design
+-admin soll keine Bilder hochladen
