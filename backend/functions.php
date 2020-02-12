@@ -144,3 +144,16 @@ function removeDirectory($path)
     rmdir($path);
     return;
 }
+
+function removeImage(){
+
+}
+
+function removeProfile($path){
+    $files = glob($path . '/*');
+    foreach ($files as $file) {
+        is_dir($file) ? removeDirectory($file) : unlink($file);
+    }
+    rmdir($path);
+    return; 
+}

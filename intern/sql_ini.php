@@ -45,9 +45,6 @@ $result = $statement->execute(array('email' => $admin_email, 'passwort' => $pass
 echo "Das Administratorkonto wurde erstellt<br>";
 
 mkdir('../images/users', 0777);
-mkdir('../images/users/user_img', 0777);
-mkdir('../images/users/user_profile_img', 0777);
-
 echo 'Das benötigte Verzeichnis wurde erstellt.';
 
 $statement = 'CREATE TABLE img_list (

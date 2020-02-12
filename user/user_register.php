@@ -54,9 +54,8 @@ if (isset($_GET['register'])) {
         $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'user_role' => $user_role));
 
         if ($result) {
-            echo '<a href="user_register_stage2.php">Stufe 2</a>';
+            header("Location: user_register_stage2.php");
             $_SESSION['register_stage'] = '1';
-            $showFormular = false;
         } else {
             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
         }

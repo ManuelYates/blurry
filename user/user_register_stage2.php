@@ -37,6 +37,7 @@ if (isset($_GET['registerext'])) {
         mkdir('../images/users/'.$email);
         mkdir('../images/users/'.$email.'/user_img');
         mkdir('../images/users/'.$email.'/user_profile_img');
+        header("Location: user_register_stage3.php");
     } else {
         echo "Fehler";
     }

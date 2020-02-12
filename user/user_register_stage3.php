@@ -7,6 +7,7 @@
     if (isset($_GET['imageupload'])) {
       $_POST['img_type'] = 'profile_picture';
         echo ImageUpload();
+        header("Location: ../index.php");
     }
  ?>
 
