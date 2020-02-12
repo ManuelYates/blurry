@@ -1,28 +1,26 @@
 <?php session_start() ?>
-<?php  require_once '../backend/config.php'; ?>
-<?php  require_once '../backend/html_prepare.php'; ?>
-<?php  require_once '../backend/functions.php'; ?>
+<?php require_once '../backend/config.php'; ?>
+<?php require_once '../backend/html_prepare.php'; ?>
+<?php require_once '../backend/functions.php'; ?>
 <?php echo SessionCheck(); ?>
 
 <?php
-    if (isset($_GET['imageupload'])) {
-      $_POST['img_type'] = 'wallpaper';
-        echo ImageUpload();
-    }
- ?>
+if (isset($_GET['imageupload'])) {
+  $_POST['img_type'] = 'wallpaper';
+  echo ImageUpload();
+}
+?>
 
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <title>Bilder hinzufügen</title>
-  <link rel="stylesheet" href="master-css.css">
+  <?php print $html_head ?>
 </head>
 
 <body>
-
+  <?php print $html_header ?>
   <form action="?imageupload=1" method="post" enctype="multipart/form-data">
     <table class="table_upload">
       <tr>
@@ -40,7 +38,7 @@
     <input type="submit" value="Hochladen">
   </form>
   <a href="<?php echo $link_index; ?>">Zurück zur Hauptseite</a>
-
+  <?php print $html_footer ?>
 </body>
 
 </html>
