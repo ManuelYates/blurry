@@ -32,10 +32,10 @@ function ImageUpload()
 {
 
     if ($_POST['img_type'] == 'wallpaper') {
-        $upload_folder = '../images/users/user_xxx/user_img/'; //Das Upload-Verzeichnis
+        $upload_folder = '../images/users/user_img/'; //Das Upload-Verzeichnis
     }
     if ($_POST['img_type'] == 'profile_picture') {
-        $upload_folder = '../images/users/user_xxx/user_profile_img/'; //Das Upload-Verzeichnis
+        $upload_folder = '../images/users/user_profile_img/'; //Das Upload-Verzeichnis
     }
 
     $filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
@@ -135,4 +135,12 @@ function ImageScroll()
     $conn->close();
 }
 
-
+function removeDirectory($path)
+{
+    $files = glob($path . '/*');
+    foreach ($files as $file) {
+        is_dir($file) ? removeDirectory($file) : unlink($file);
+    }
+    rmdir($path);
+    return;
+}

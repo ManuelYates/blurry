@@ -33,6 +33,6 @@ if (isset($_SESSION['user_role'])) {
         </tr>
         <br>
       </table>
-      <input type="submit" value="Hochladen">
+      <input type="submit" value="DB RESET">
   </body>
 </html>
