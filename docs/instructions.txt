@@ -15,7 +15,6 @@ Viel Spaß mit Blurry
 
 //TO DO
 -Admin User List (Löschung)
--
 -Bilder Löschen
 -Anstelle eines Profilbildes ein Stock nehmen
 -Footer soll bei Desktop nicht anzeigen
