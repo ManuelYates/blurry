@@ -34,6 +34,9 @@ if (isset($_GET['registerext'])) {
         $_SESSION['vorname'] = $_POST['vorname'];
         $_SESSION['nachname'] = $_POST['nachname'];
         $showFormular = false;
+        mkdir('../images/users/'.$email);
+        mkdir('../images/users/'.$email.'/user_img');
+        mkdir('../images/users/'.$email.'/user_profile_img');
     } else {
         echo "Fehler";
     }
