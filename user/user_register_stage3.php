@@ -22,9 +22,9 @@
 <body>
 <?php print $html_header ?>
   <form action="?imageupload=1" method="post" enctype="multipart/form-data">
-    <table .class="table_upload">
+    <table class="table_upload">
       <tr>
-        <th>Profilbild von <?php print $_SESSION['vorname'] ?></th>
+        <th>Profilbild von <?php print $_SESSION['email'] ?></th>
       </tr>
       <tr>
         <td><input type="file" name="datei"></td>

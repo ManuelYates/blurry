@@ -9,6 +9,7 @@
 
 if (isset($_GET['register'])) {
     echo UserRegister();
+    $_SESSION['email'] = $_POST['email'];
 }
 
 ?>
