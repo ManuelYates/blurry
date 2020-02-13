@@ -35,7 +35,7 @@ function ImageUpload()
         $upload_folder = '../images/users/' . $_SESSION['email'] . '/user_img/'; //Das Upload-Verzeichnis
     }
     if ($_POST['img_type'] == 'profile_picture') {
-        $upload_folder = '../images/users/' . $_ ['email'] . '/user_profile_img/'; //Das Upload-Verzeichnis
+        $upload_folder = '../images/users/' . $_SESSION['email'] . '/user_profile_img/'; //Das Upload-Verzeichnis
     }
 
     $filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
@@ -204,11 +204,14 @@ function UserRegister()
         $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname, 'user_role' => $user_role));
 
         if ($result) {
-            header("Location: user_register_stage3.php");
+            mkdir('../images/users/'.$email);
+            mkdir('../images/users/'.$email.'/user_img');
+            mkdir('../images/users/'.$email.'/user_profile_img');    
+            header("Location: user_profile_pic_edit.php");
         } else {
             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
         }
-
+       
     }
 }
 
