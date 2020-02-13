@@ -35,7 +35,7 @@ function ImageUpload()
         $upload_folder = '../images/users/' . $_SESSION['email'] . '/user_img/'; //Das Upload-Verzeichnis
     }
     if ($_POST['img_type'] == 'profile_picture') {
-        $upload_folder = '../images/users/' . $_SESSION['email'] . '/user_profile_img/'; //Das Upload-Verzeichnis
+        $upload_folder = '../images/users/' . $_ ['email'] . '/user_profile_img/'; //Das Upload-Verzeichnis
     }
 
     $filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
