@@ -5,23 +5,27 @@
 }
 
 body {
-  background-color: #e6e9eb;
+  background-color: #fff5f7;
   overflow: hidden;
 }
 
 #header {
   position: relative;
-  background-color: silver;
-  border-radius: 0px 0px 20px 20px;
+  background-color: #fff5f7;
   text-align: center;
 }
 
 #logo img {
-  width: 15%;
+  width: 10%;
 }
 
 #logo {
-  height: 100px;
+  height: 80px;
+  border-bottom: 3px solid #ffaaab;
+}
+
+#navi {
+  height: 25px;
 }
 
 #navi li {
@@ -31,18 +35,24 @@ body {
 #navi a {
   padding: 15px;
   text-decoration: none;
-  color: red;
 }
-#navi li:hover {
+
+#navi li :visited {
   color: black;
-  font-style: italic;
+}
+
+#navi li:hover {
+  background-color: #ff5e6c;
+  font-weight: bold;
+  text-decoration: underline black;
+  border: solid;
+  border-width: 1px;
+  border-radius: 13px;
 }
 
 /* CSS für die Tabellen
 #content_img{
-
 }
-
 .image_single img{
   width: 50%;
 }
@@ -56,6 +66,7 @@ body {
 
 h1 {
   font-size: 1.5em;
+  border-top: 3px solid #ffaaab;
 }
 
 .img_list img {
@@ -74,16 +85,13 @@ h1 {
   top: 0px;
   width: 1920px;
   filter: blur(5px);
-  height: 700px;
+  height: 725px;
   z-index: 1;
 }
 
 .image_inner {
   width: 500px;
-  border: solid;
-  border-width: 2px;
-  border-radius: 15px 15px 15px 15px;
-  background-color: white;
+  background-color: #ff5e6c;
   position: absolute;
   top: 100px;
   z-index: 5;
@@ -95,8 +103,8 @@ h1 {
 
 .image_inner img {
   width: 500px;
-  border-radius: 13px 13px 0px 0px;
   border-bottom: solid 2px;
+  border-top: solid 2px;
 }
 
 .img_info {

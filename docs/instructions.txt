@@ -18,6 +18,8 @@ Viel Spaß mit Blurry
 -Bilder Löschen
 -Anstelle eines Profilbildes ein Stock nehmen
 -Footer soll bei Desktop nicht anzeigen
+-LI -> Buttons
+-Profil aus DB DELETE
 
 //BUG LIST
 
