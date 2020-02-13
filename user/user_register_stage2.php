@@ -15,16 +15,7 @@
 $showFormular = true; //Variable ob das Registrierungsformular anezeigt werden soll
 
 if (isset($_GET['registerext'])) {
-    $error = false;
-    $email = $_SESSION['email'];
-    $vorname = $_POST['vorname'];
-    $nachname = $_POST['nachname'];
-
-    $sql = "UPDATE users SET vorname='$vorname', nachname='$nachname' WHERE email ='$email'";
-
-    $stmt = $pdo->prepare($sql);
-
-    $stmt->execute();
+    
 
     echo $stmt->rowCount() . " Datensätze wurden geupdated<br>";
 

@@ -166,6 +166,8 @@ function UserRegister()
     $email = $_POST['email'];
     $passwort = $_POST['passwort'];
     $passwort2 = $_POST['passwort2'];
+    $vorname = $_POST['vorname'];
+    $nachname = $_POST['nachname'];
     $_SESSION['email'] = $_POST['email'];
     $user_role = 2;
 
@@ -198,15 +200,15 @@ function UserRegister()
     if (!$error) {
         $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-        $statement = $pdo->prepare("INSERT INTO users (email, passwort, user_role) VALUES (:email, :passwort, :user_role)");
-        $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'user_role' => $user_role));
+        $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname, user_role) VALUES (:email, :passwort, :vorname, :nachname,:user_role)");
+        $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname, 'user_role' => $user_role));
 
         if ($result) {
-            header("Location: user_register_stage2.php");
-            $_SESSION['register_stage'] = '1';
+            header("Location: user_register_stage3.php");
         } else {
             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
         }
+
     }
 }
 
