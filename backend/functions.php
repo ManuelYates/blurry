@@ -158,3 +158,15 @@ function removeProfile($path)
     rmdir($path);
     return;
 }
+
+function UserRegisterS1()
+{
+}
+
+function UserRegisterS2()
+{
+}
+
+function UserRegisterS3()
+{
+}
