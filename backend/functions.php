@@ -32,10 +32,10 @@ function ImageUpload()
 {
 
     if ($_POST['img_type'] == 'wallpaper') {
-        $upload_folder = '../images/users/'.$_SESSION['email'].'/user_img/'; //Das Upload-Verzeichnis
+        $upload_folder = '../images/users/' . $_SESSION['email'] . '/user_img/'; //Das Upload-Verzeichnis
     }
     if ($_POST['img_type'] == 'profile_picture') {
-        $upload_folder = '../images/users/'.$_SESSION['email'].'/user_profile_img/'; //Das Upload-Verzeichnis
+        $upload_folder = '../images/users/' . $_SESSION['email'] . '/user_profile_img/'; //Das Upload-Verzeichnis
     }
 
     $filename = pathinfo($_FILES['datei']['name'], PATHINFO_FILENAME);
@@ -145,15 +145,16 @@ function removeDirectory($path)
     return;
 }
 
-function removeImage(){
-
+function removeImage()
+{
 }
 
-function removeProfile($path){
+function removeProfile($path)
+{
     $files = glob($path . '/*');
     foreach ($files as $file) {
         is_dir($file) ? removeDirectory($file) : unlink($file);
     }
     rmdir($path);
-    return; 
+    return;
 }
