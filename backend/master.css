@@ -33,7 +33,7 @@ body {
   text-decoration: none;
   color: red;
 }
-#navi li :hover {
+#navi li:hover {
   color: black;
   font-style: italic;
 }
