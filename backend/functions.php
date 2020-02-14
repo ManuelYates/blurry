@@ -1,4 +1,5 @@
 <?php
+//Überprüft ob eine Session besteht, um zu entscheiden, welche Inhalte angezeigt werden.
 function SessionCheck()
 {
     if (isset($_SESSION['vorname'])) {
@@ -8,6 +9,7 @@ function SessionCheck()
     }
 }
 
+//Überprüft explizit ob ein User mit der Role "3" angemeldet ist umd ihm den Admin-Bereich freizuschalten
 function AdminSessionCheck()
 {
     if ($_SESSION['user_role'] != '3') {
@@ -16,6 +18,7 @@ function AdminSessionCheck()
     }
 }
 
+//Schreibt eine Versionsabgabe in die Tabelle "verslog" aus den Inhalten der Admin Eingaben
 function Verslog_add()
 {
     require 'config.php';
@@ -27,7 +30,7 @@ function Verslog_add()
     $stmt->execute();
 }
 
-
+//Lädt sämtliche Bilder in die dafür vorgesehenen Verzeichnisse und trägt sie in die Datenbank ein
 function ImageUpload()
 {
 
@@ -110,6 +113,7 @@ function ImageUpload()
     echo 'Bild erfolgreich hochgeladen: <a href="' . $new_path . '">' . $new_path . '</a><br><button type="button" name="button"><a href="../index.php">Zurück zum Menü</a></button>';
 }
 
+//Zeigt alle Bilder in der Tabelle "img_list" an, welche das Attribut "wallpaper" haben
 function ImageScroll()
 {
 
@@ -135,6 +139,28 @@ function ImageScroll()
     $conn->close();
 }
 
+//Zeigt nur die Bilder, welcher der angemeldete User hochgeladen hat
+function UserImageScroll()
+{
+    $conn = mysqli_connect("localhost", "root", "", "blurry");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $email = $_SESSION['email'];
+    $sql = "SELECT * from img_list WHERE img_creator = '$email' AND img_type = 'wallpaper'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr><td><img src=" . $row['img_path'] . "></td><td>" . $row['img_name'] . "</td><td>" . $row['img_creator'] . "</td><td>" . $row['uploaded_at'] . "</td><td><button >Bild Löschen</button></td></tr>";
+        }
+    } else {
+        echo "<h1>Kein Eintrag gefunden</h1>";
+    }
+
+    $conn->close();
+}
+
+//Eine rekursive Funktion, welche es ermöglicht von überall die Dateien und das entsprechende Verzeichnis zu löschen
 function removeDirectory($path)
 {
     $files = glob($path . '/*');
@@ -145,20 +171,32 @@ function removeDirectory($path)
     return;
 }
 
+//Eine Funktion, welche das Löschen einzelner Bilder ermöglicht
 function removeImage()
 {
 }
 
+//Eine Funktion, welche alle Bilder eines Nutzers löscht, ihn aus der DB löscht und anschließend seine Session zerstört
 function removeProfile($path)
 {
+        require 'config.php';
     $files = glob($path . '/*');
     foreach ($files as $file) {
         is_dir($file) ? removeDirectory($file) : unlink($file);
     }
     rmdir($path);
-    return;
+    $email = $_SESSION['email'];
+    $sql = "DELETE FROM users WHERE email = '$email'";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $sql = "DELETE FROM img_list WHERE img_creator = '$email'";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    session_destroy();
+    header("Location: ../index.php");
 }
 
+//Registrierung
 function UserRegister()
 {
     require 'config.php';
@@ -204,14 +242,12 @@ function UserRegister()
         $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname, 'user_role' => $user_role));
 
         if ($result) {
-            mkdir('../images/users/'.$email);
-            mkdir('../images/users/'.$email.'/user_img');
-            mkdir('../images/users/'.$email.'/user_profile_img');    
+            mkdir('../images/users/' . $email);
+            mkdir('../images/users/' . $email . '/user_img');
+            mkdir('../images/users/' . $email . '/user_profile_img');
             header("Location: user_profile_pic_edit.php");
         } else {
             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
         }
-       
     }
 }
-

@@ -7,7 +7,7 @@
 
 <?php
 if (isset($_GET['profile_remove'])) {
-  echo removeProfile('../images/users/'.$_SESSION['email']);
+  echo removeProfile('../images/users/' . $_SESSION['email']);
 }
 ?>
 
@@ -40,29 +40,12 @@ if (isset($_GET['profile_remove'])) {
   <div>
     <table class='img_list'>
       <tr>
+        <th>Bild:</th>
         <th>Name:</th>
         <th>Ersteller:</th>
         <th>Upload-Datum:</th>
       </tr>
-      <?php
-
-      $conn = mysqli_connect("localhost", "root", "", "blurry");
-      if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-      }
-      $email = $_SESSION['email'];
-      $sql = "SELECT * from img_list WHERE img_creator = '$email' AND img_type = 'wallpaper'";
-      $result = $conn->query($sql);
-      if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-          echo "<tr><td><img src=" . $row['img_path'] . "></td><td>" . $row['img_name'] . "</td><td>" . $row['img_creator'] . "</td><td>" . $row['uploaded_at'] . "</td><td><button >Bild Löschen</button></td></tr>";
-        }
-      } else {
-        echo "<h1>Kein Eintrag gefunden</h1>";
-      }
-
-      $conn->close();
-      ?>
+      <?php echo UserImageScroll() ?>
     </table>
   </div>
 
