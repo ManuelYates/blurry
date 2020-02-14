@@ -40,7 +40,7 @@ $link_sql_ini = $link.$folder_intern.'sql_ini_ui.php';
 $link_testing_area = $link.'testing_area.php';
 
 
-
+//HTML LI Erstellung
 $html_li_user_img_scrollsearch =  '<li><a href="'.$link_user_img_scrollsearch.'">Main</a></li>';
 $html_li_image_upload_ui  = '<li><a href="'.$link_image_upload_ui.'">Upload</a></li>';
 $html_li_index = '<li><a href  ="'.$link_index.'">Index</a></li>';
@@ -51,7 +51,16 @@ $html_li_testing_area = '<li><a href  ="'.$link_testing_area.'">Beta</a></li>';
 $html_li_user_logout = '<li><a href  ="'.$link_user_logout.'">Logout</a></li>';
 $html_li_admin = '<li><a href  ="'.$link_admin.'">Admin</a></li>';
 
+//HTML BUTTON ERSTELLUNG
+$html_btn_user_img_scrollsearch =  '<a href="'.$link_user_img_scrollsearch.'"><button>Main</button></a>';
+$html_btn_image_upload_ui  = '<a href="'.$link_image_upload_ui.'"><button>Upload</button></a>';
+$html_btn_index = '<a href  ="'.$link_index.'"><button>Index</button></a>';
+$html_btn_user_register = '<a href  ="'.$link_user_register.'"><button>Registrierung</button></a>';
+$html_btn_user_login = '<a href  ="'.$link_user_login.'"><button>Login</button></a>';
 
+$html_btn_testing_area = '<a href  ="'.$link_testing_area.'"><button>Beta</button></a>';
+$html_btn_user_logout = '<a href  ="'.$link_user_logout.'"><button>Logout</button></a>';
+$html_btn_admin = '<a href  ="'.$link_admin.'"><button>Admin</button></a>';
 
 
 if (isset($_SESSION['user_role'])) {
@@ -59,30 +68,30 @@ if (isset($_SESSION['user_role'])) {
         $html_navi = '
     <div id="navi">
     <ul>'.
-    $html_li_user_img_scrollsearch.
-    $html_li_image_upload_ui.
-    $html_li_index.
-    $html_li_user_logout
+    $html_btn_user_img_scrollsearch.
+    $html_btn_image_upload_ui.
+    $html_btn_index.
+    $html_btn_user_logout
     .'</ul></div>';
     } elseif ($_SESSION['user_role'] == '3') {
         $html_navi = '
     <div id="navi">
     <ul>'.
-    $html_li_user_img_scrollsearch.
-    $html_li_image_upload_ui.
-    $html_li_index.
-    $html_li_testing_area.
-    $html_li_user_logout.
-    $html_li_admin
+    $html_btn_user_img_scrollsearch.
+    $html_btn_image_upload_ui.
+    $html_btn_index.
+    $html_btn_testing_area.
+    $html_btn_user_logout.
+    $html_btn_admin
     .'</ul></div>';
     }
 } else {
     $html_navi = '
   <div id="navi">
   <ul>'.
-  $html_li_user_img_scrollsearch.
-  $html_li_user_register.
-  $html_li_user_login.
+  $html_btn_user_img_scrollsearch.
+  $html_btn_user_register.
+  $html_btn_user_login.
   '</ul></div>';
 }
 
