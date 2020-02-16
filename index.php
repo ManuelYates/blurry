@@ -14,6 +14,12 @@
 
 <body>
   <?php print $html_header ?>
+
+  <?php if(isset($_POST['register'])){
+    echo 'Sie wurden erfolgreich registriert';
+    $_POST['register'] = null;
+  }
+?>
   <?php
 
   $conn = mysqli_connect("localhost", "root", "", "blurry");

@@ -3,7 +3,7 @@
 function SessionCheck()
 {
     if (isset($_SESSION['vorname'])) {
-        echo '<div id="UserInfoHeader">Session besteht ' . $_SESSION['vorname'] . ' ' . $_SESSION['nachname'] . '</div>';
+        echo '<div id="UserInfoHeader"><img src='. $_SESSION["profile_img_path"] .'> ' . $_SESSION['vorname'] . ' ' . $_SESSION['nachname'] . '</div>';
     } else {
         echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt. <br>Hier geht es zum <a href="../user/user_login.php">Login</a></div>';
     }
@@ -245,7 +245,6 @@ function UserRegister()
             mkdir('../images/users/' . $email);
             mkdir('../images/users/' . $email . '/user_img');
             mkdir('../images/users/' . $email . '/user_profile_img');
-            header("Location: user_profile_pic_edit.php");
         } else {
             echo 'Beim Abspeichern ist leider ein Fehler aufgetreten<br>';
         }

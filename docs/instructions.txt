@@ -23,4 +23,4 @@ Viel Spaß mit Blurry
 
 -Nach dem Upload des Profilbildes nicht auf der Seite bleiben, entweder anzeigen lassen oder weiterleiten
 -Screen für Erfolg bei Registrierung
--Tasten unten orientieren sich nicht zentriert
+
