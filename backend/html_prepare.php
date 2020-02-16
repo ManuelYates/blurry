@@ -64,7 +64,6 @@ if (isset($_SESSION['user_role'])) {
     <ul>' .
             $html_btn_user_img_scrollsearch .
             $html_btn_image_upload_ui .
-            $html_btn_index .
             $html_btn_user_logout
             . '</ul></div>';
     } elseif ($_SESSION['user_role'] == '3') {

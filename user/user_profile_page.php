@@ -12,12 +12,19 @@ if (isset($_GET['profile_remove'])) {
 }
 ?>
 
+<?php
+if (isset($_GET['image_delete($img_id)'])) {
+  echo removeImage('../images/users/' . $_SESSION['email']);
+}
+?>
+
 <head>
   <?php print $html_head ?>
 </head>
 
 <body>
   <?php print $html_header ?>
+  
   <div id="content_profile_page">
     <div class="profile_pic">
       <img src="<?php print $_SESSION['profile_img_path'] ?>" alt="">

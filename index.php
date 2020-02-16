@@ -1,6 +1,6 @@
 <?php session_start() ?>
 <?php require_once 'backend/config.php'; ?>
-<?php require_once 'backend/html_prepare.php'; ?>
+<?php require_once 'backend/html_prepare.php';?>
 <?php require_once 'backend/functions.php'; ?>
 
 <?php echo SessionCheck();

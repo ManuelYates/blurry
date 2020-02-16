@@ -11,9 +11,9 @@ function SessionCheck()
         } else {
             echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt. <br>Hier geht es zum <a href="' . $link_user_login . '">Login</a></div>';
         }
-    }else {
-            if (isset($_SESSION['vorname'])) {
-                echo '<div id="UserInfoHeader">
+    } else {
+        if (isset($_SESSION['vorname'])) {
+            echo '<div id="UserInfoHeader">
             <img src=' . $_SESSION["profile_img_path"] . '> 
             <div id="UserInfoHeader_Text"><h4>' . $_SESSION['vorname'] . ' ' . $_SESSION['nachname'] . '</h4>
             <ul>
@@ -21,12 +21,12 @@ function SessionCheck()
             <li><a href="' . $link_user_logout . '">Logout</a></li>
             </ul>
             </div></div>';
-            } else {
-                echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt.
+        } else {
+            echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt.
             Hier geht es zum <a href="' . $link_user_login . '">Login</a></div>';
-            }
         }
     }
+}
 
 
 //Überprüft explizit ob ein User mit der Role "3" angemeldet ist umd ihm den Admin-Bereich freizuschalten
@@ -111,6 +111,7 @@ function ImageUpload()
         $stmt->execute();
         $pdo = null;
         echo 'Bild erfolgreich hochgeladen: <a href="' . $new_path . '">' . $new_path . '</a><br><button type="button" name="button"><a href="' . $link_user_img_scrollsearch . '">Zurück zum Menü</a></button>';
+        move_uploaded_file($_FILES['datei']['tmp_name'], $new_path);
     }
 
     if ($_POST['img_type'] == 'profile_picture') {
@@ -118,7 +119,7 @@ function ImageUpload()
         require 'html_prepare.php';
 
         $email = $_SESSION['email'];
-        $img_name = 'PB_' . $email;
+        $img_name = $email;
         $img_type = $_POST['img_type'];
         $sql = "INSERT INTO img_list (img_path , img_name , img_creator, img_type) VALUES ('$new_path', '$img_name' , '$email' , '$img_type' )";
         $stmt = $pdo->prepare($sql);
@@ -127,10 +128,11 @@ function ImageUpload()
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $pdo = null;
-        header("Location: '.$link_user_login.'");
+        move_uploaded_file($_FILES['datei']['tmp_name'], $new_path);
+        $_SESSION['profile_img_path'] = $new_path;
+        sleep(1);
+        header("Location: '.$link_user_profile_page.'");
     }
-
-    move_uploaded_file($_FILES['datei']['tmp_name'], $new_path);
 }
 
 //Zeigt alle Bilder in der Tabelle "img_list" an, welche das Attribut "wallpaper" haben
@@ -171,7 +173,11 @@ function UserImageScroll()
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            echo "<tr><td><img src=" . $row['img_path'] . "></td><td>" . $row['img_name'] . "</td><td>" . $row['img_creator'] . "</td><td>" . $row['uploaded_at'] . "</td><td><button >Bild Löschen</button></td></tr>";
+            echo '<tr><td><img src=' . $row["img_path"] .
+             '></td><td>' . $row["img_name"] . '</td><td>' .
+              $row["img_creator"] . '</td><td>' .
+               $row['uploaded_at'] . 
+               '</td><td><form method="post"><input type="submit" name="image_delete('.$row['img_id'].')" value="Bild Löschen"/></form></td></tr>';
         }
     } else {
         echo "<h1>Kein Eintrag gefunden</h1>";
@@ -192,11 +198,19 @@ function removeDirectory($path)
 }
 
 //Eine Funktion, welche das Löschen einzelner Bilder ermöglicht
-function removeImage()
+function removeImage($img_id)
 {
+    require 'config.php';
+        require 'html_prepare.php';
+
+        $img_name = $_POST['img_name'];
+        $email = $_SESSION['email'];
+        $img_type = $_POST['img_type'];
+        $sql = "DELETE * FROM img_list WHERE img_id = '$img_id'";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $pdo = null;
 }
-
-
 
 //Eine Funktion, welche alle Bilder eines Nutzers löscht, ihn aus der DB löscht und anschließend seine Session zerstört
 function removeProfile($path)
