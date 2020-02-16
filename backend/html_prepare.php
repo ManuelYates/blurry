@@ -78,7 +78,6 @@ if (isset($_SESSION['user_role'])) {
     <div id="navi">
     <ul>'.
     $html_btn_user_img_scrollsearch.
-    $html_btn_image_upload_ui.
     $html_btn_index.
     $html_btn_testing_area.
     $html_btn_user_logout.
