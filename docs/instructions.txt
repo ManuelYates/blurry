@@ -18,13 +18,9 @@ Viel Spaß mit Blurry
 -Bilder Löschen
 -Anstelle eines Profilbildes ein Stock nehmen
 -Footer soll bei Desktop nicht anzeigen
--LI -> Buttons
--Profil aus DB DELETE
 
 //BUG LIST
 
--Statt Session mit $_Post arbeiten, bei Registrierung oder alles in ein Form schreiben
 -Nach dem Upload des Profilbildes nicht auf der Seite bleiben, entweder anzeigen lassen oder weiterleiten
 -Screen für Erfolg bei Registrierung
 -Tasten unten orientieren sich nicht zentriert
--admin soll keine Bilder hochladen

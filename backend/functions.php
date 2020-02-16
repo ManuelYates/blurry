@@ -3,9 +3,9 @@
 function SessionCheck()
 {
     if (isset($_SESSION['vorname'])) {
-        echo "Session besteht " . $_SESSION['vorname'] . " " . $_SESSION['nachname'] . "<br>";
+        echo '<div id="UserInfoHeader">Session besteht ' . $_SESSION['vorname'] . ' ' . $_SESSION['nachname'] . '</div>';
     } else {
-        echo 'Sie sind noch nicht eingelogt. <br>Hier geht es zum <a href="../user/user_login.php">Login</a><br>';
+        echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt. <br>Hier geht es zum <a href="../user/user_login.php">Login</a></div>';
     }
 }
 
@@ -251,3 +251,5 @@ function UserRegister()
         }
     }
 }
+
+
