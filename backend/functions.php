@@ -9,13 +9,21 @@ function SessionCheck()
     if ($url == 'httplocalhost/blurry/user/user_profile_page.php') {
         if (isset($_SESSION['vorname'])) {
         } else {
-            echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt. <br>Hier geht es zum <a href="../user/user_login.php">Login</a></div>';
+            echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt. <br>Hier geht es zum <a href="'.$link_user_login.'">Login</a></div>';
         }
     }else{
         if (isset($_SESSION['vorname'])) {
-            echo '<div id="UserInfoHeader"><img src=' . $_SESSION["profile_img_path"] . '> ' . $_SESSION['vorname'] . ' ' . $_SESSION['nachname'] . '</div>';
+            echo '<div id="UserInfoHeader">
+            <img src=' . $_SESSION["profile_img_path"] . '> 
+            <div id="UserInfoHeader_Text"><h4>' . $_SESSION['vorname'] . ' ' . $_SESSION['nachname'] . '</h4>
+            <ul>
+            <li><a href="'.$link_user_profile_page.'">Mein Profil</a></li>
+            <li><a href="'.$link_user_logout.'">Logout</a></li>
+            </ul>
+            </div></div>';
         } else {
-            echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt. <br>Hier geht es zum <a href="../user/user_login.php">Login</a></div>';
+            echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt.
+            Hier geht es zum <a href="'.$link_user_login.'">Login</a></div>';
         }
     }
 }
@@ -221,6 +229,7 @@ function UserRegister()
     $nachname = $_POST['nachname'];
     $_SESSION['email'] = $_POST['email'];
     $user_role = 2;
+    $user_stock_img = '../images/blurry/stock_userimage.jpg';
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo 'Bitte eine gültige E-Mail-Adresse eingeben<br>';
@@ -251,8 +260,8 @@ function UserRegister()
     if (!$error) {
         $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-        $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname, user_role) VALUES (:email, :passwort, :vorname, :nachname,:user_role)");
-        $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname, 'user_role' => $user_role));
+        $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname, user_role, profile_img_path) VALUES (:email, :passwort, :vorname, :nachname,:user_role, :profile_img_path)");
+        $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname, 'user_role' => $user_role, 'profile_img_path' => $user_stock_img));
 
         if ($result) {
             mkdir('../images/users/' . $email);

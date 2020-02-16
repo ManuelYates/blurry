@@ -26,15 +26,13 @@ $folder_intern = 'intern/';
 $link_index = $link . 'index.php';
 
 $link_image_upload_ui = $link . $folder_backend . 'image_upload_ui.php';
-
+$link_user_profile_pic_edit = $link . $folder_user . 'user_profile_pic_edit.php';
 $link_user_img_scrollsearch = $link . $folder_user . 'user_img_scrollsearch.php';
 $link_user_login = $link . $folder_user . 'user_login.php';
 $link_user_register = $link . $folder_user . 'user_register.php';
-
 $link_user_profile_page = $link . $folder_user . 'user_profile_page.php';
 $link_user_logout = $link . $folder_user . 'user_logout.php';
 $link_user_index = $link . $folder_user . 'user_index.php';
-
 $link_admin = $link . $folder_intern . 'admin.php';
 $link_sql_ini = $link . $folder_intern . 'sql_ini_ui.php';
 $link_testing_area = $link . 'testing_area.php';
@@ -93,16 +91,27 @@ if (isset($_SESSION['user_role'])) {
 $html_logo = '<div id="logo"><img src="' . $link . 'images/blurry/blurry_logo.png" alt=""></div>';
 
 $html_header = '<div id="header">' . $html_logo . $html_navi . '</div>';
-
+/*
 if (isset($_SESSION['user_role'])) {
+    if($_SESSION['user_role'] == '2') {
     $html_footer = '</div>
     <div id="footer">
       <table class="footer_menu_button" ><tr>
         <th><button type="button" name="button">Taste</button></th>
         <th><button type="button" name="button">Taste</button></th>
         <th><button type="button" name="button"><a href="' . $link_user_profile_page . '">Mein Profil</a></button></th>
+      </tr></table> </div>';
+    }elseif ($_SESSION['user_role'] == '3'){
+        $html_footer = '</div>
+    <div id="footer">
+      <table class="footer_menu_button" ><tr>
+        <th><button type="button" name="button">Taste</button></th>
+        <th><button type="button" name="button">Taste</button></th>
+        <th><button type="button" name="button"><a href="' . $link_user_profile_page . '">DB Reset</a></button></th>
       </tr></table>
     </div>';
+    }
 } else {
     $html_footer = ' ';
-}
+} */
+$html_footer = ' ';

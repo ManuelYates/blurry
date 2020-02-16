@@ -10,7 +10,7 @@
 if (isset($_GET['register'])) {
     echo UserRegister();
     $_POST['register'] = 'true';
-    header("Location: index.php");
+    header("Location: ../index.php");
 }
 
 ?>
