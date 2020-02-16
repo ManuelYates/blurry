@@ -2,10 +2,21 @@
 //Überprüft ob eine Session besteht, um zu entscheiden, welche Inhalte angezeigt werden.
 function SessionCheck()
 {
-    if (isset($_SESSION['vorname'])) {
-        echo '<div id="UserInfoHeader"><img src='. $_SESSION["profile_img_path"] .'> ' . $_SESSION['vorname'] . ' ' . $_SESSION['nachname'] . '</div>';
-    } else {
-        echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt. <br>Hier geht es zum <a href="../user/user_login.php">Login</a></div>';
+    require 'html_prepare.php';
+    $url = (empty($_SERVER['HTTPS'])) ? 'http' : 'https';
+    $url .= $_SERVER['HTTP_HOST'];
+    $url .= $_SERVER['REQUEST_URI'];
+    if ($url == 'httplocalhost/blurry/user/user_profile_page.php') {
+        if (isset($_SESSION['vorname'])) {
+        } else {
+            echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt. <br>Hier geht es zum <a href="../user/user_login.php">Login</a></div>';
+        }
+    }else{
+        if (isset($_SESSION['vorname'])) {
+            echo '<div id="UserInfoHeader"><img src=' . $_SESSION["profile_img_path"] . '> ' . $_SESSION['vorname'] . ' ' . $_SESSION['nachname'] . '</div>';
+        } else {
+            echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt. <br>Hier geht es zum <a href="../user/user_login.php">Login</a></div>';
+        }
     }
 }
 
@@ -176,10 +187,12 @@ function removeImage()
 {
 }
 
+
+
 //Eine Funktion, welche alle Bilder eines Nutzers löscht, ihn aus der DB löscht und anschließend seine Session zerstört
 function removeProfile($path)
 {
-        require 'config.php';
+    require 'config.php';
     $files = glob($path . '/*');
     foreach ($files as $file) {
         is_dir($file) ? removeDirectory($file) : unlink($file);
@@ -250,5 +263,3 @@ function UserRegister()
         }
     }
 }
-
-

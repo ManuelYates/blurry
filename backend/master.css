@@ -1,5 +1,5 @@
 * {
-  margin: 0spx;
+  margin: 0px;
   padding: 0px;
   font-family: "Heebo";
 }
@@ -220,13 +220,6 @@ h1 {
    border-radius: 4px;
  }
 
- .table_upload th {
-
- }
-
- .table_upload td {
-
- }
 
  .table_upload td button {
    color: blue;

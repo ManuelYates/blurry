@@ -3,6 +3,7 @@
 <?php require '../backend/html_prepare.php'; ?>
 <?php require '../backend/functions.php'; ?>
 <!DOCTYPE html>
+<?php echo SessionCheck(); ?>
 <html lang="de" dir="ltr">
 
 <?php

@@ -3,7 +3,8 @@
 <?php require_once 'backend/html_prepare.php'; ?>
 <?php require_once 'backend/functions.php'; ?>
 
-<?php SessionCheck() ?>
+<?php echo SessionCheck();
+?>
 
 <!DOCTYPE html>
 <html lang="de" dir="ltr">
@@ -15,11 +16,11 @@
 <body>
   <?php print $html_header ?>
 
-  <?php if(isset($_POST['register'])){
+  <?php if (isset($_POST['register'])) {
     echo 'Sie wurden erfolgreich registriert';
     $_POST['register'] = null;
   }
-?>
+  ?>
   <?php
 
   $conn = mysqli_connect("localhost", "root", "", "blurry");
