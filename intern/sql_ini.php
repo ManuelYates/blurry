@@ -1,9 +1,8 @@
-<?php session_start(); 
+<?php
  require_once '../backend/config.php'; 
  require_once '../backend/html_prepare.php'; 
  require_once '../backend/functions.php';
 
-echo SessionCheck();
 $pdo = new PDO('mysql:host=localhost;dbname=blurry', 'root', '');
 $statement = 'DROP DATABASE blurry';
 $pdo->exec($statement);
@@ -74,7 +73,5 @@ echo "Die neue Tabelle verslog wurde erstellt<br>";
 echo "Die benötigten Tabellen wurden erstellt!<br>";
 $pdo = null;
 echo "Die Verbindung zu DB wurde geschlossen";
-session_destroy();
-echo "Sie wurden ausgeloggt";
-echo "<br> <a href=" . $link_user_img_scrollsearch . ">Hier gelangen Sie zurück zur Hauptseite</a>";
+echo '<br> <a href="../index.php">Hier gelangen Sie zurück zur Hauptseite</a>';
 ?>

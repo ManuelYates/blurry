@@ -9,24 +9,25 @@ function SessionCheck()
     if ($url == 'httplocalhost/blurry/user/user_profile_page.php') {
         if (isset($_SESSION['vorname'])) {
         } else {
-            echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt. <br>Hier geht es zum <a href="'.$link_user_login.'">Login</a></div>';
+            echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt. <br>Hier geht es zum <a href="' . $link_user_login . '">Login</a></div>';
         }
-    }else{
-        if (isset($_SESSION['vorname'])) {
-            echo '<div id="UserInfoHeader">
+    }else {
+            if (isset($_SESSION['vorname'])) {
+                echo '<div id="UserInfoHeader">
             <img src=' . $_SESSION["profile_img_path"] . '> 
             <div id="UserInfoHeader_Text"><h4>' . $_SESSION['vorname'] . ' ' . $_SESSION['nachname'] . '</h4>
             <ul>
-            <li><a href="'.$link_user_profile_page.'">Mein Profil</a></li>
-            <li><a href="'.$link_user_logout.'">Logout</a></li>
+            <li><a href="' . $link_user_profile_page . '">Mein Profil</a></li>
+            <li><a href="' . $link_user_logout . '">Logout</a></li>
             </ul>
             </div></div>';
-        } else {
-            echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt.
-            Hier geht es zum <a href="'.$link_user_login.'">Login</a></div>';
+            } else {
+                echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt.
+            Hier geht es zum <a href="' . $link_user_login . '">Login</a></div>';
+            }
         }
     }
-}
+
 
 //Überprüft explizit ob ein User mit der Role "3" angemeldet ist umd ihm den Admin-Bereich freizuschalten
 function AdminSessionCheck()
@@ -109,6 +110,7 @@ function ImageUpload()
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $pdo = null;
+        echo 'Bild erfolgreich hochgeladen: <a href="' . $new_path . '">' . $new_path . '</a><br><button type="button" name="button"><a href="' . $link_user_img_scrollsearch . '">Zurück zum Menü</a></button>';
     }
 
     if ($_POST['img_type'] == 'profile_picture') {
@@ -125,11 +127,10 @@ function ImageUpload()
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $pdo = null;
-        session_destroy();
+        header("Location: '.$link_user_login.'");
     }
 
     move_uploaded_file($_FILES['datei']['tmp_name'], $new_path);
-    echo 'Bild erfolgreich hochgeladen: <a href="' . $new_path . '">' . $new_path . '</a><br><button type="button" name="button"><a href="../index.php">Zurück zum Menü</a></button>';
 }
 
 //Zeigt alle Bilder in der Tabelle "img_list" an, welche das Attribut "wallpaper" haben
