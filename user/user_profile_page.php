@@ -28,7 +28,18 @@ if (isset($_GET['image_delete'])) {
   <div id="content_profile_page">
     <div class="profile_pic">
       <img src="<?php print $_SESSION['profile_img_path'] ?>" alt="">
-      <a href="<?php print $link_user_profile_pic_edit ?>"><button>Profilbild ändern</button></a>
+      <table>
+        <tr>
+          <td><a href="<?php print $link_user_profile_pic_edit ?>"><button>Profilbild ändern</button></a></td>
+          <td>
+            <form action="?profile_remove=1" method="post" enctype="multipart/form-data">
+              <button type="submit">Profile Löschen</button>
+            </form>
+          </td>
+        </tr>
+
+      </table>
+
     </div>
 
     <table>
@@ -58,9 +69,7 @@ if (isset($_GET['image_delete'])) {
     </table>
   </div>
 
-  <form action="?profile_remove=1" method="post" enctype="multipart/form-data">
-    <button type="submit">Profile Löschen</button>
-  </form>
+
 
 
   <?php print $html_footer ?>
