@@ -13,8 +13,8 @@ if (isset($_GET['profile_remove'])) {
 ?>
 
 <?php
-if (isset($_GET['image_delete($img_id)'])) {
-  echo removeImage('../images/users/' . $_SESSION['email']);
+if (isset($_GET['image_delete'])) {
+  echo removeImage();
 }
 ?>
 

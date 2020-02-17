@@ -173,11 +173,7 @@ function UserImageScroll()
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-            echo '<tr><td><img src=' . $row["img_path"] .
-             '></td><td>' . $row["img_name"] . '</td><td>' .
-              $row["img_creator"] . '</td><td>' .
-               $row['uploaded_at'] . 
-               '</td><td><input type="submit" name="image_delete('.$row['img_id'].')" value="Bild Löschen"/></td></tr>';
+            echo '<form action="?image_delete=1" method="post"><tr><td><img name="img_path" src=' . $row["img_path"] .'></td><td><input name="img_path" value="'.$row["img_path"].'"></td><td>' . $row["img_name"] . '</td><td>' .$row["img_creator"] . '</td><td>' .$row['uploaded_at'] .'</td><td><input name="img_id" value="'.$row['img_id'].'"></td><td><input type="submit" name="image_delete(' . $row['img_id'] . ')" value="Bild Löschen"/></td></tr></form>';
         }
     } else {
         echo "<h1>Kein Eintrag gefunden</h1>";
@@ -198,18 +194,18 @@ function removeDirectory($path)
 }
 
 //Eine Funktion, welche das Löschen einzelner Bilder ermöglicht
-function removeImage($img_id)
+function removeImage()
 {
     require 'config.php';
-        require 'html_prepare.php';
-
-        $img_name = $_POST['img_name'];
-        $email = $_SESSION['email'];
-        $img_type = $_POST['img_type'];
-        $sql = "DELETE * FROM img_list WHERE img_id = '$img_id'";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute();
-        $pdo = null;
+    require 'html_prepare.php';
+    $img_path = $_POST['img_path'];
+    $img_id = $_POST['img_id'];
+    $email = $_SESSION['email'];
+    $sql = "DELETE FROM img_list WHERE img_id = '$img_id'";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $pdo = null;
+    unlink($img_path);
 }
 
 //Eine Funktion, welche alle Bilder eines Nutzers löscht, ihn aus der DB löscht und anschließend seine Session zerstört
