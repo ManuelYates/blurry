@@ -15,12 +15,9 @@ Viel Spaß mit Blurry
 
 //TO DO
 -Admin User List (Löschung)
--Bilder Löschen
--Anstelle eines Profilbildes ein Stock nehmen
--Footer soll bei Desktop nicht anzeigen
 
 //BUG LIST
 
--Nach dem Upload des Profilbildes nicht auf der Seite bleiben, entweder anzeigen lassen oder weiterleiten
+-Wenn keine Bild Datei hochgeladen wird, wird keine Seite angezeigt
 -Screen für Erfolg bei Registrierung
 
