@@ -68,13 +68,13 @@ function ImageUpload()
     //Überprüfung der Dateiendung
     $allowed_extensions = array('png', 'jpg', 'jpeg', 'gif');
     if (!in_array($extension, $allowed_extensions)) {
-        die("Ungültige Dateiendung. Nur png, jpg, jpeg und gif-Dateien sind erlaubt");
+        return("Ungültige Dateiendung. Nur png, jpg, jpeg und gif-Dateien sind erlaubt");
     }
 
     //Überprüfung der Dateigröße
     $max_size = 2560 * 1440;
     if ($_FILES['datei']['size'] > $max_size) {
-        die("Es werden vorerst nur 2k-Bilder unterstützt");
+        return("Es werden vorerst nur 2k-Bilder unterstützt");
     }
 
     //Überprüfung dass das Bild keine Fehler enthält
@@ -82,7 +82,7 @@ function ImageUpload()
         $allowed_types = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
         $detected_type = exif_imagetype($_FILES['datei']['tmp_name']);
         if (!in_array($detected_type, $allowed_types)) {
-            die("Nur der Upload von Bilddateien ist gestattet");
+            return("Nur der Upload von Bilddateien ist gestattet");
         }
     }
 
@@ -131,7 +131,7 @@ function ImageUpload()
         move_uploaded_file($_FILES['datei']['tmp_name'], $new_path);
         $_SESSION['profile_img_path'] = $new_path;
         sleep(1);
-        header("Location: '.$link_user_profile_page.'");
+        header("Location: '.$link_user_img_scrollsearch.'");
     }
 }
 
