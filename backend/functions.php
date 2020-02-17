@@ -177,7 +177,7 @@ function UserImageScroll()
              '></td><td>' . $row["img_name"] . '</td><td>' .
               $row["img_creator"] . '</td><td>' .
                $row['uploaded_at'] . 
-               '</td><td><form method="post"><input type="submit" name="image_delete('.$row['img_id'].')" value="Bild Löschen"/></form></td></tr>';
+               '</td><td><input type="submit" name="image_delete('.$row['img_id'].')" value="Bild Löschen"/></td></tr>';
         }
     } else {
         echo "<h1>Kein Eintrag gefunden</h1>";
