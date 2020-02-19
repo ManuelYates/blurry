@@ -161,6 +161,47 @@ function ImageScroll()
     $conn->close();
 }
 
+function AdminUserList(){
+    $conn = mysqli_connect("localhost", "root", "", "blurry");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $email = $_SESSION['email'];
+    $sql = "SELECT * from users WHERE user_role = 2";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<form action="?user_delete=1" method="post"><tr><td><img name="img_path" src=' . $row["profile_img_path"] .'></td><td>' . $row["vorname"] . ' ' .$row["nachname"]. '</td><td>' .$row["email"] . '</td><td>' .$row['created_at'] .'</td><td><input type="submit" name="user_delete(' . $row['id'] . ')" value="User Löschen"/></td></tr></form>';
+        }
+    } else {
+        echo "<h1>Kein Eintrag gefunden</h1>";
+    }
+
+    $conn->close();
+  
+}
+
+
+function AdminImageScroll(){
+    $conn = mysqli_connect("localhost", "root", "", "blurry");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $email = $_SESSION['email'];
+    $sql = "SELECT * from img_list WHERE img_type = 'wallpaper'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo '<form action="?image_delete=1" method="post"><tr><td><img name="img_path" src=' . $row["img_path"] .'></td><td><input name="img_path" value="'.$row["img_path"].'"></td><td>' . $row["img_name"] . '</td><td>' .$row["img_creator"] . '</td><td>' .$row['uploaded_at'] .'</td><td><input name="img_id" value="'.$row['img_id'].'"></td><td><input type="submit" name="image_delete(' . $row['img_id'] . ')" value="Bild Löschen"/></td></tr></form>';
+        }
+    } else {
+        echo "<h1>Kein Eintrag gefunden</h1>";
+    }
+
+    $conn->close();
+
+}
+
 //Zeigt nur die Bilder, welcher der angemeldete User hochgeladen hat
 function UserImageScroll()
 {

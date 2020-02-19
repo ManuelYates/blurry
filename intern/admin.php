@@ -42,10 +42,16 @@ if (isset($_GET['versupload'])) {
     document.getElementById('idresult').innerHTML = vVerslog;
   }
 
+  function fshowUserList(){
+    var viFrameUserList;
+    viFrameUserList = ' <div id="AdminiFrame_imglist"><iframe src="admin_userlist.php" width="100%" height="100%"></iframe></div>';
+    document.getElementById('idresult').innerHTML = viFrameUserList;
+  }
+
   function fshowImageScroll() {
-    var vImageScroll;
-    vImageScroll = '<div id="content_img"><?php echo ImageScroll() ?>';
-    document.getElementById('idresult').innerHTML = vImageScroll;
+    var viFrameImageList;
+    viFrameImageList = '<div id="AdminiFrame_imglist"><iframe src="admin_imglist.php" width="100%" height="100%"></iframe></div>';
+    document.getElementById('idresult').innerHTML = viFrameImageList;
   }
 </script>
 
@@ -55,14 +61,15 @@ if (isset($_GET['versupload'])) {
   <table>
     <tr>
       <td><button onclick="fshowVerslog();">Versionslog hinzufügen</button></td>
+      <td><button onclick="fshowUserList();">User-Liste ansehen</button></td>
       <td><button onclick="fshowImageScroll();">Bilder löschen</button></td>
       <td><a href="<?php echo $link_sql_ini ?>"><button>DB Reset</button></a></td>
     </tr>
   </table>
 
-  <div id="verslog_added">
+ 
 
-  </div>
+ 
 
 
 
