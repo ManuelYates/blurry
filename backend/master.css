@@ -202,6 +202,10 @@ h1 {
   width: 300px;
 }
 
+#AdminiFrame{
+  height: 600px;
+}
+
 #form_login {
   background-color: grey;
   margin-left: auto;

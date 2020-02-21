@@ -44,14 +44,20 @@ if (isset($_GET['versupload'])) {
 
   function fshowUserList(){
     var viFrameUserList;
-    viFrameUserList = ' <div id="AdminiFrame_imglist"><iframe src="admin_userlist.php" width="100%" height="100%"></iframe></div>';
+    viFrameUserList = ' <div id="AdminiFrame"><iframe src="admin_userlist.php" width="100%" height="100%"></iframe></div>';
     document.getElementById('idresult').innerHTML = viFrameUserList;
   }
 
   function fshowImageScroll() {
     var viFrameImageList;
-    viFrameImageList = '<div id="AdminiFrame_imglist"><iframe src="admin_imglist.php" width="100%" height="100%"></iframe></div>';
+    viFrameImageList = '<div id="AdminiFrame"><iframe src="admin_imglist.php" width="100%" height="100%"></iframe></div>';
     document.getElementById('idresult').innerHTML = viFrameImageList;
+  }
+
+  function fshowDBReset(){
+    var viFrameDBReset;
+    viFrameDBReset = '<div id="AdminiFrame"><iframe src="sql_ini.php" width="100%" height="100%"></iframe></div>';
+    document.getElementById('idresult').innerHTML = viFrameDBReset;
   }
 </script>
 
@@ -63,7 +69,7 @@ if (isset($_GET['versupload'])) {
       <td><button onclick="fshowVerslog();">Versionslog hinzufügen</button></td>
       <td><button onclick="fshowUserList();">User-Liste ansehen</button></td>
       <td><button onclick="fshowImageScroll();">Bilder löschen</button></td>
-      <td><a href="<?php echo $link_sql_ini ?>"><button>DB Reset</button></a></td>
+      <td><button onclick="fshowDBReset();">DB RESET!</button></td>
     </tr>
   </table>
 
