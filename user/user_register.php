@@ -39,6 +39,10 @@ if (isset($_GET['register'])) {
                     <td><input type="password" size="40" maxlength="250" name="passwort2"></td>
                 </tr>
                 <tr>
+                    <th>Benutzername:</th>
+                    <td><input type="text" size="40" maxlength="250" name="username"></td>
+                </tr>
+                <tr>
                     <th>Vorname:</th>
                     <td><input type="text" size="40" maxlength="250" name="vorname"></td>
                 </tr>

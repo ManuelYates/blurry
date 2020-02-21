@@ -17,13 +17,6 @@ Viel Spaß mit Blurry
 
 index.php:
     -DELETE VERSLOG
-    -ADD instructions.txt
-
-session_check.php:
-    -DELETE
-
-testing_area.php:
-    -DELETE
 
 user_profile_page.php:
     -CHANGE Input to non-changeable Values / hidden    
@@ -42,9 +35,6 @@ sql_ini.php:
     -ADD Admin Porsche PW: natascha   
     -ADD Safety Test
     -ADD FALLBACK/ERROR OUTPUT
-
-admin.php:
-    -ADD sql_ini.php AS IFRAME
 
 sql_ini_ui.php:
     -DELETE

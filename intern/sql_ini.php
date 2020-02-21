@@ -92,7 +92,7 @@ PRIMARY KEY (`verslog_id`)
         <p>Mit dem Zurücksetzen der DB gehen alle eingetragenen Benutzer und deren Bilder verloren! <br>
             Dieser Schritt kann nicht rückgängig gemacht werden <br>
             Sind Sie sicher, dass Sie Blurry zurücksetzen möchten</p>
-        <input type="submit" value="DB-Reset">
+        <input type="submit" value="Ja, Datenbank zurücksetzen!">
 
 
     </form>
