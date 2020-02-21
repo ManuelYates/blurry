@@ -14,10 +14,54 @@ Viel Spaß mit Blurry
 
 
 //TO DO
--Admin User List (Löschung)
+
+index.php:
+    -DELETE VERSLOG
+    -ADD instructions.txt
+
+session_check.php:
+    -DELETE
+
+testing_area.php:
+    -DELETE
+
+user_profile_page.php:
+    -CHANGE Input to non-changeable Values / hidden    
+
+admin_imglist.php:
+    -Löschung: DB, FS, UI
+    -(Verwarnungsystem)
+
+admin_userlist.php:
+    -Löschung: DB, FS, UI
+
+sql_ini.php:
+    -DELETE VERSLOG
+    -ADD user_favorit DB
+    -ADD Admin Aeva PW: vanessa
+    -ADD Admin Porsche PW: natascha   
+    -ADD Safety Test
+    -ADD FALLBACK/ERROR OUTPUT
+
+admin.php:
+    -ADD sql_ini.php AS IFRAME
+
+sql_ini_ui.php:
+    -DELETE
+
+general:
+    -Favoriten-System: DB, UI
+    -Messages-System: DB, UI
+    -TRANSFER TO DESKTOP
+    -TRANSFER TO MOBILE
+    -CHANGE NAME STRUCTURE!
 
 //BUG LIST
 
--Wenn keine Bild Datei hochgeladen wird, wird keine Seite angezeigt
 -Screen für Erfolg bei Registrierung
 
+//LEGENDE:
+
+FS: FILE-SYSTEM
+DB: DATA-BASE
+UI: USER INTERFACE
