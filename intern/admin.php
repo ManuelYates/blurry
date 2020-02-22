@@ -31,18 +31,7 @@ if (isset($_GET['versupload'])) {
 </head>
 
 <script>
-  function fshowVerslog() {
-    var vVerslog;
-    vVerslog = '<form action="?versupload=1" method="post" enctype="multipart/form-data">'
-    vVerslog += '<table>';
-    vVerslog += '<tr><th>Version Titel</th><td><input name="verslog_title" type="text"></td></tr>';
-    vVerslog += '<tr><th>Version</th><td><input name="verslog_num" type="int"></td></tr>';
-    vVerslog += '<tr><th>Versionsbeschreibung</th><td><input name="verslog_text" type="text"></td></tr>';
-    vVerslog += '</table><input type="submit" value="Hochladen"></form>';
-    document.getElementById('idresult').innerHTML = vVerslog;
-  }
-
-  function fshowUserList(){
+  function fshowUserList() {
     var viFrameUserList;
     viFrameUserList = ' <div id="AdminiFrame"><iframe src="admin_userlist.php" width="100%" height="100%"></iframe></div>';
     document.getElementById('idresult').innerHTML = viFrameUserList;
@@ -54,7 +43,7 @@ if (isset($_GET['versupload'])) {
     document.getElementById('idresult').innerHTML = viFrameImageList;
   }
 
-  function fshowDBReset(){
+  function fshowDBReset() {
     var viFrameDBReset;
     viFrameDBReset = '<div id="AdminiFrame"><iframe src="sql_ini.php" width="100%" height="100%"></iframe></div>';
     document.getElementById('idresult').innerHTML = viFrameDBReset;
@@ -66,20 +55,11 @@ if (isset($_GET['versupload'])) {
 
   <table>
     <tr>
-      <td><button onclick="fshowVerslog();">Versionslog hinzufügen</button></td>
       <td><button onclick="fshowUserList();">User-Liste ansehen</button></td>
       <td><button onclick="fshowImageScroll();">Bilder löschen</button></td>
       <td><button onclick="fshowDBReset();">DB RESET!</button></td>
     </tr>
   </table>
-
- 
-
- 
-
-
-
-
   <div id="idresult"></div>
   <?php print $html_footer ?>
 </body>

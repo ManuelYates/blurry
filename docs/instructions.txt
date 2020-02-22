@@ -16,7 +16,7 @@ Viel Spaß mit Blurry
 //TO DO
 
 index.php:
-    -DELETE VERSLOG
+    -Welcome Screen mit Vorstellung des Programms
 
 user_profile_page.php:
     -CHANGE Input to non-changeable Values / hidden    
@@ -29,15 +29,10 @@ admin_userlist.php:
     -Löschung: DB, FS, UI
 
 sql_ini.php:
-    -DELETE VERSLOG
+
     -ADD user_favorit DB
-    -ADD Admin Aeva PW: vanessa
-    -ADD Admin MY PW: natascha   
     -ADD Safety Test
     -ADD FALLBACK/ERROR OUTPUT
-
-sql_ini_ui.php:
-    -DELETE
 
 general:
     -Favoriten-System: DB, UI

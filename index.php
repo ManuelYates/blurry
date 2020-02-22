@@ -15,34 +15,11 @@
 
 <body>
   <?php print $html_header ?>
+  <div>
+    <h1>Willkommen bei Blurry</h1>
 
-  <?php
-
-  $conn = mysqli_connect("localhost", "root", "", "blurry");
-  if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-  }
-  $sql = "SELECT * from verslog";
-  $result = $conn->query($sql);
-
-  if ($result->num_rows > 0) {
-    while ($row = $result->fetch_assoc()) {
-      echo '
-    <div class="verslog_main">
-    <table>
-    <tr><th>' . $row['verslog_num'] . '</th></tr>
-    <tr><th>' . $row['verslog_title'] . '</th></tr>
-    <tr><th>' . $row['verslog_text'] . '</th></tr>
-    </table>
-    </div>
-      ';
-    }
-  } else {
-    echo "<h1>Kein Eintrag gefunden</h1>";
-  }
-
-  $conn->close();
-  ?>
+  </div>
+  
   <?php print $html_footer ?>
 </body>
 
