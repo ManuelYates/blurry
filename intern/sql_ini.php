@@ -1,7 +1,7 @@
 <?php
-    require_once '../backend/config.php';
-    require_once '../backend/html_prepare.php';
-    require_once '../backend/functions.php';
+require_once '../backend/config.php';
+require_once '../backend/html_prepare.php';
+require_once '../backend/functions.php';
 
 if (isset($_GET[''])) {
 
@@ -22,12 +22,12 @@ if (isset($_GET[''])) {
     $pdo = new PDO('mysql:host=localhost;dbname=blurry', 'root', '');
 
     $statement = "CREATE TABLE users (
-id INT NOT NULL AUTO_INCREMENT,
-email VARCHAR(255),
-passwort varchar(255),
-vorname varchar(255),
-nachname varchar(255),
-created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        id INT NOT NULL AUTO_INCREMENT,
+        email VARCHAR(255),
+        passwort varchar(255),
+    vorname varchar(255),
+    nachname varchar(255),
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 updated_at timestamp on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
 user_role int(1),
 profile_img_path varchar(255),
@@ -44,14 +44,14 @@ PRIMARY KEY (`id`), UNIQUE (`email`)
     $passwort_hash = password_hash($admin_passwort, PASSWORD_DEFAULT);
     $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname, user_role) VALUES (:email, :passwort, :vorname, :nachname, :user_role)");
     $result = $statement->execute(array('email' => $admin_email, 'passwort' => $passwort_hash, 'vorname' => $admin_vorname, 'nachname' => $admin_nachname, 'user_role' => $admin_user_role));
-    echo "Das Administratorkonto wurde erstellt<br>";
+    echo "Das Administratorkonto " . $admin_email . " wurde erstellt<br>";
 
     mkdir('../images/users', 0777);
     echo 'Das benötigte Verzeichnis wurde erstellt.';
 
     $statement = 'CREATE TABLE img_list (
-img_id INT NOT NULL AUTO_INCREMENT,
-img_path VARCHAR(255),
+        img_id INT NOT NULL AUTO_INCREMENT,
+           img_path VARCHAR(255),
 img_name VARCHAR(255),
 img_creator VARCHAR(255),
 img_type VARCHAR(255),

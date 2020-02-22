@@ -32,7 +32,7 @@ sql_ini.php:
     -DELETE VERSLOG
     -ADD user_favorit DB
     -ADD Admin Aeva PW: vanessa
-    -ADD Admin Porsche PW: natascha   
+    -ADD Admin MY PW: natascha   
     -ADD Safety Test
     -ADD FALLBACK/ERROR OUTPUT
 
