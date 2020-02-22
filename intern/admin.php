@@ -4,24 +4,16 @@
 <?php require '../backend/functions.php'; ?>
 <?php echo AdminSessionCheck() ?>
 
-<?php
-if (isset($_GET['versupload'])) {
-  $error = null;
-  if (!isset($_POST['verslog_title'])) {
-    $error = +'Bitte geben Sie einen Titel ein';
-  }
-  if (!isset($_POST['verslog_num'])) {
-    $error = +'Bitte geben Sie eine Versionsnummer ein';
-  }
-  if (!isset($_POST['verslog_text'])) {
-    $error = +'Bitte geben Sie eine Beschreibung ein';
-  }
+<?php 
+if(isset($_GET['UserGen'])){
+  echo UserGenerator();
+}
 
-  if (!isset($error)) {
-    echo Verslog_add();
-  }
+if(isset($_GET['ImgGen'])){
+echo ImageGenerator();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="de" dir="ltr">
@@ -58,6 +50,8 @@ if (isset($_GET['versupload'])) {
       <td><button onclick="fshowUserList();">User-Liste ansehen</button></td>
       <td><button onclick="fshowImageScroll();">Bilder löschen</button></td>
       <td><button onclick="fshowDBReset();">DB RESET!</button></td>
+      <td><form action="?UserGen=1" method="post"><input type="submit" value="User Generieren"></form></td>
+      <td><form action="?ImgGen=1" method="post"><input type="submit" value="Bilder Generieren"></form></td>
     </tr>
   </table>
   <div id="idresult"></div>

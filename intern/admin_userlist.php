@@ -13,7 +13,10 @@
 
 <?php
 if (isset($_GET['user_delete'])) {
-  echo DeleteUser();
+  $email = $_POST['email'];
+ echo $email;
+ 
+  //echo AdminDeleteUser($email);
 }
 ?>
 
@@ -21,10 +24,10 @@ if (isset($_GET['user_delete'])) {
 <div>
     <table class='user_list'>
       <tr>
-        <th>Bild:</th>
+        <th>Profilbild:</th>
         <th>Name:</th>
-        <th>Ersteller:</th>
-        <th>Upload-Datum:</th>
+        <th>E-Mail:</th>
+        <th>Registrierungsdatum:</th>
       </tr>
       <?php echo AdminUserList();?>
     </table>
