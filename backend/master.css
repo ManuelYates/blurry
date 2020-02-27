@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #fff5f7;
+  background-color: #152642;
   overflow: hidden;
 }
 
@@ -25,8 +25,14 @@ body {
   height: 50px;
 }
 
+#UserInfoHeader_Text a {
+  text-decoration: none;
+  color: #081B33;
+}
+
 #UserInfoHeader h4{
   text-align: left;
+  color: #081B33;
 }
 
 #UserInfoHeader ul{
@@ -43,7 +49,7 @@ body {
 
 #header {
   position: relative;
-  background-color: #fff5f7;
+  background-color: #506680;
   text-align: center;
 }
 
@@ -53,7 +59,7 @@ body {
 
 #logo {
   height: 80px;
-  border-bottom: 3px solid #ffaaab;
+  border-bottom: 3px solid #767D92;
 }
 
 #navi {
@@ -63,7 +69,7 @@ body {
 #navi button {
   display: inline-block;
   transition-duration: 0.4s;
-  border: solid #ff5e6c;
+  border: solid #767D92;
   border-width: 1px;
   border-radius: 3px;
   padding-left: 5px;
@@ -76,13 +82,13 @@ body {
 }
 
 #navi button :visited {
-  color: black;
+  color: #081B33;
 }
 
 #navi button:hover {
-  background-color: #ff5e6c;
+  background-color: #767D92;
   color: white;
-  border: solid #ff5e6c;
+  border: solid #767D92;
   border-width: 1px;
   border-radius: 4px;
   box-shadow: 0 5px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -96,7 +102,17 @@ body {
 
 h1 {
   font-size: 1.5em;
-  border-top: 3px solid #ffaaab;
+  border-top: 3px solid #767D92;
+  color: #767D92;
+}
+
+.img_list {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  background-color: #767D92;
+  border-radius: 5px;
+  width: 500px;
 }
 
 .img_list img {
@@ -122,7 +138,7 @@ h1 {
 
 .image_inner {
   width: 500px;
-  background-color: #ff5e6c;
+  background-color: #767D92;
   position: absolute;
   top: 100px;
   z-index: 5;
@@ -130,6 +146,8 @@ h1 {
   right:0px;
   margin-left: auto;
   margin-right: auto;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .image_inner:hover {
@@ -139,8 +157,6 @@ h1 {
 
 .image_inner img {
   width: 500px;
-  border-bottom: solid 2px;
-  border-top: solid 2px;
 }
 
 .img_info {
@@ -167,10 +183,12 @@ h1 {
   width: 500px;
   margin-top: 50px;
 }
+
 #content_register tr {
   text-align: left;
   width: 40px;
 }
+
 #content_user_index {
   width: 600px;
   margin-left: auto;
@@ -182,9 +200,34 @@ h1 {
   height: 200px;
   margin-top: 20px;
   margin-bottom: 20px;
+  background-color: #767D92;
+  border-radius: 5px;
+  transition-duration: 0.4s;
+  border: solid #767D92;
 }
+
+
+#content_user_index button:hover {
+  cursor: pointer;
+  background-color: #767D92;
+  color: white;
+  border: solid #767D92;
+  border-width: 1px;
+  border-radius: 5px;
+  box-shadow: 0 5px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 h1 {
   text-align: center;
+}
+
+#content_profile_page {
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #767D92;
+  width: 500px;
+  margin-top: 20px;
+  border-radius: 5px;
 }
 
 #content_profile_page table {
@@ -193,6 +236,7 @@ h1 {
 }
 
 .profile_pic {
+  padding-top: 5px;
   width: 300px;
   margin-left: auto;
   margin-right: auto;
@@ -207,24 +251,29 @@ h1 {
 }
 
 #form_login {
-  background-color: grey;
+  background-color: #767D92;
+  text-align: center;
   margin-left: auto;
   margin-right: auto;
   width: 500px;
-  height: 600px;
+  height: 200px;
   padding-top: 50px;
+  border-radius: 5px;
+  margin-top: 20px;
 }
 
 #form_register {
-  background-color: grey;
+  background-color: #767D92;
   margin-left: auto;
   margin-right: auto;
   width: 500px;
-  height: 600px;
+  height: 250px;
+  margin-top: 20px;
   padding-top: 50px;
+  border-radius: 5px;
 }
 
-#footer {
+/*#footer {
   width: 100%;
   position: absolute;
   bottom: 0px;
@@ -239,19 +288,25 @@ h1 {
 }
 .footer_menu_button th {
   width: 200px;
-}
+}*/
 
  .table_upload {
    margin-left: auto;
    margin-right: auto;
-   border: solid black;
+   border: solid #767D92;
    border-width: 1px;
-   border-radius: 4px;
+   border-radius: 5px;
+   background-color: #767D92;
  }
 
 
  .table_upload td button {
    color: blue;
+ }
+
+a {
+   color: #767D92;
+   text-decoration: none;
  }
 
  .user_list td{
