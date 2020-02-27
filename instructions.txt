@@ -1,10 +1,12 @@
-Blurry Vers. 0.1
+Blurry Vers. 0.0
 
 Installations-Anleitung:
 Damit BLURRY auf ihrem System vernünftig funktioniert benötigen Sie:
 
 XAMPP (Apache & MySQL an)
 einen Browser ihrer Wahl (Firefox oder Chrome wird empfohlen)
+
+Kopieren Sie den gesamten Ordner "blurry", in das htdocs Verzeichnis in ihrem XAMPP/Client.
 
 Um das System auf ihrem Apache-Client funktionstüchtig zu bekommen müssen Sie als erstes
 "localhost/blurry/firststartup.php" aufrufen.
@@ -15,6 +17,19 @@ Dann bitten wir Sie eine DB ohne Inhalt mit dem Namen 'test' zu erstellen und da
 
 Sollten das Erstellen der benötigten DB's und Tabellen erfolgreich sein, ist ihr System betriebsbereit.
 Viel Spaß mit Blurry
+
+PS:
+Es wurde bereits ein Administrator-Account in die Initalisierung eingefügt:
+E-Mail: admin@blurry.de
+PW: root
+WICHTIG: Über diesen Account  können keine Bilder hochgeladen werden. Hierfür benötigen Sie einen "normalen" Nutzeraccount.
+
+Mit diesem können Sie im Navigationsbereich den Reiter "Admin" auswählen.
+Dieser ermöglicht ihnen die Datenbank erneut zu initalisieren, falls es zu Problemen kommen sollte.
+Außerdem können dort 10 User / Beispiel-Bilder in die Datenbank eingefügt werden.(somit müssen keine Bilder selbst eingestellt werden).
+Es können zudem alle Nutzeraccounts und Bilder eingesehen werden (Design nicht ganz funktionstüchtig).
+Sollten Sie über Node.js auf ihrem System verfügen, können Sie im DIR "app" über npm start, einen Electron Client, der die Basisfunktionen unterstützt, starten.
+
 
 
 //TO DO
