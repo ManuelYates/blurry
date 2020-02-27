@@ -232,8 +232,8 @@ function ImageScroll()
     }
     $sql = "SELECT * from img_list WHERE img_type = 'wallpaper'";
     $result = $conn->query($sql);
-
     if ($result->num_rows > 0) {
+        
         while ($row = $result->fetch_assoc()) {
             echo "<div class= img_main><div class='image_inner'><img src=" . $row['img_path'] . "><br>
       <table class='img_info'>

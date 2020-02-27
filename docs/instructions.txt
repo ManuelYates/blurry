@@ -7,7 +7,11 @@ XAMPP (Apache & MySQL an)
 einen Browser ihrer Wahl (Firefox oder Chrome wird empfohlen)
 
 Um das System auf ihrem Apache-Client funktionstüchtig zu bekommen müssen Sie als erstes
-"localhost/blurry/intern/sql_ini.php" aufrufen.
+"localhost/blurry/firststartup.php" aufrufen.
+
+!Wichtig: sollte die automatisch erstelle DB "test" nicht mehr vorhanden sein, kann es sein das die DB nicht erstellt werden kann.
+In dem Fall gehen wir von einem Nutzer aus, der den Umgang mit PHPMyAdmin kennt.
+Dann bitten wir Sie eine DB ohne Inhalt mit dem Namen 'test' zu erstellen und danach die Seite erneut aufzurufen.
 
 Sollten das Erstellen der benötigten DB's und Tabellen erfolgreich sein, ist ihr System betriebsbereit.
 Viel Spaß mit Blurry

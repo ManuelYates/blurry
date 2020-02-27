@@ -1,19 +1,5 @@
 <?php
-require_once '../backend/config.php';
-require_once '../backend/html_prepare.php';
-require_once '../backend/functions.php';
-
-$showForm = true;
-
-/*if (isset($_GET['DBReset'])) {*/
-    $pdo = new PDO('mysql:host=localhost;dbname=blurry', 'root', '');
-    $statement = 'DROP DATABASE IF EXISTS blurry ';
-    $pdo->exec($statement);
-    echo "Die alte DB wurde gelöscht<br>";
-
-    removeDirectory('../images/users');
-    echo "Das Bilder-Verzeichnis wurde gelöscht";
-
+    $pdo = new PDO('mysql:host=localhost;dbname=test', 'root', '');
     $statement = 'CREATE DATABASE blurry';
     $pdo->exec($statement);
     echo "Die neue DB wurde erstellt<br>";
@@ -74,7 +60,7 @@ $showForm = true;
     $result = $statement->execute(array('email' => $admin_email, 'passwort' => $passwort_hash, 'vorname' => $admin_vorname, 'nachname' => $admin_nachname, 'username' => $admin_username, 'user_role' => $admin_user_role));
     echo "Das Administratorkonto " . $admin_email . " wurde erstellt<br>";
 
-    mkdir('../images/users', 0777);
+    mkdir('images/users', 0777);
     echo 'Das benötigte Verzeichnis wurde erstellt.';
 
     $statement = 'CREATE TABLE img_list (
@@ -93,28 +79,4 @@ $showForm = true;
     echo "Die benötigten Tabellen wurden erstellt!<br>";
     $pdo = null;
     echo "Die Verbindung zu DB wurde geschlossen";
-    $showForm = false;
-    /*}*/
-
-?>
-
-
-<html>
-
-<body>
-    <?php
-    if ($showForm) {
     ?>
-        <form action="?DBReset=1" method="post">
-            <h1>DB RESET!</h1><br>
-            <p>Mit dem Zurücksetzen der DB gehen alle eingetragenen Benutzer und deren Bilder verloren! <br>
-                Dieser Schritt kann nicht rückgängig gemacht werden <br>
-                Sind Sie sicher, dass Sie Blurry zurücksetzen möchten</p>
-            <input type="submit" value="Ja, Datenbank zurücksetzen!">
-        </form>
-    <?php
-    }
-    ?>
-</body>
-
-</html>
