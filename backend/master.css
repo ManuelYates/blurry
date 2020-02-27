@@ -9,17 +9,19 @@ body {
   overflow: hidden;
 }
 
-#UserInfoHeader{
+/* Small Icon Top-Right */
+
+#UserInfoHeader {
   position: absolute;
   right: 10px;
   top: 1%;
   z-index: 5;
-  width: 225px;
+  width: 250px;
   text-align: center;
 }
 
 #UserInfoHeader_Text {
-  margin-left: 25px;
+  margin-left: 0px;
   float: right;
   width: 150px;
   height: 50px;
@@ -30,20 +32,20 @@ body {
   color: #081B33;
 }
 
-#UserInfoHeader h4{
+#UserInfoHeader h4 {
   text-align: left;
   color: #081B33;
 }
 
-#UserInfoHeader ul{
+#UserInfoHeader ul {
   list-style: none;
   text-align: left;
   font-size: small;
 }
 
-#UserInfoHeader img{
-  width: 50px;
-  border-radius: 25px;
+#UserInfoHeader img {
+  height: 50px;
+  border-radius: 20px;
   float: left;
 }
 
@@ -54,7 +56,7 @@ body {
 }
 
 #logo img {
-  width: 10%;
+  width: 200px;
 }
 
 #logo {
@@ -91,7 +93,7 @@ body {
   border: solid #767D92;
   border-width: 1px;
   border-radius: 4px;
-  box-shadow: 0 5px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 5px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 #content_img {
@@ -123,9 +125,9 @@ h1 {
   position: relative;
   margin-top: 10px;
   margin-bottom: 10px;
-
   height: 700px;
 }
+
 .image_outer {
   position: absolute;
   top: 0px;
@@ -143,7 +145,7 @@ h1 {
   top: 100px;
   z-index: 5;
   left: 0px;
-  right:0px;
+  right: 0px;
   margin-left: auto;
   margin-right: auto;
   border-bottom-left-radius: 5px;
@@ -151,7 +153,7 @@ h1 {
 }
 
 .image_inner:hover {
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
   transition-duration: 0.8s;
 }
 
@@ -179,6 +181,7 @@ h1 {
   border-radius: 15px 15px 15px 15px;
   background-color: white;
 }
+
 #content_register table {
   width: 500px;
   margin-top: 50px;
@@ -206,7 +209,6 @@ h1 {
   border: solid #767D92;
 }
 
-
 #content_user_index button:hover {
   cursor: pointer;
   background-color: #767D92;
@@ -214,7 +216,7 @@ h1 {
   border: solid #767D92;
   border-width: 1px;
   border-radius: 5px;
-  box-shadow: 0 5px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 5px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
 }
 
 h1 {
@@ -244,9 +246,29 @@ h1 {
 
 .profile_pic img {
   width: 300px;
+  box-shadow: 0px 0px 51px 13px rgba(0, 0, 0, 0.75);
 }
 
-#AdminiFrame{
+.profile_pic button {
+  display: inline-block;
+  transition-duration: 0.4s;
+  border: solid #767D92;
+  border-width: 1px;
+  border-radius: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.profile_pic button:hover {
+  background-color: #767D92;
+  color: white;
+  border: solid #767D92;
+  border-width: 1px;
+  border-radius: 4px;
+  box-shadow: 0 5px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#AdminiFrame {
   height: 600px;
 }
 
@@ -290,35 +312,43 @@ h1 {
   width: 200px;
 }*/
 
- .table_upload {
-   margin-left: auto;
-   margin-right: auto;
-   border: solid #767D92;
-   border-width: 1px;
-   border-radius: 5px;
-   background-color: #767D92;
- }
+.table_upload {
+  margin-left: auto;
+  margin-right: auto;
+  border: solid #767D92;
+  border-width: 1px;
+  border-radius: 5px;
+  background-color: #767D92;
+}
 
+.table_upload_colspan {
+  text-align: right;
+}
 
- .table_upload td button {
-   color: blue;
- }
+.table_upload_leerzeile{
+  height: 10px;
+}
+
+.table_upload_mobile {
+  display: none;
+}
 
 a {
-   color: #767D92;
-   text-decoration: none;
- }
+  color: #767D92;
+  text-decoration: none;
+}
 
- .user_list td{
-   padding: 10px;
- }
- .user_list img{
+.user_list td {
+  padding: 10px;
+}
+
+.user_list img {
   width: 25px;
- }
+}
 
- #AdminiFrame{
-   overflow-y: scroll;
-   overflow-x: hidden;
-   border: hidden;
+#AdminiFrame {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border: hidden;
   width: 100%;
- }
+}

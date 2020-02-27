@@ -5,11 +5,11 @@ require_once '../backend/functions.php';
 
 $showForm = true;
 
-/*if (isset($_GET['DBReset'])) {*/
+if (isset($_GET['DBReset'])) {
     $pdo = new PDO('mysql:host=localhost;dbname=blurry', 'root', '');
     $statement = 'DROP DATABASE IF EXISTS blurry ';
     $pdo->exec($statement);
-    echo "Die alte DB wurde gelöscht<br>";
+    echo '<p style="color:white; line-height: 30px;">Die alte DB wurde gelöscht<br>';
 
     removeDirectory('../images/users');
     echo "Das Bilder-Verzeichnis wurde gelöscht";
@@ -22,7 +22,6 @@ $showForm = true;
     $pdo = new PDO('mysql:host=localhost;dbname=blurry', 'root', '');
 
     $statement = "CREATE TABLE users (
-     
         id INT NOT NULL AUTO_INCREMENT,
         email VARCHAR(255),
         passwort varchar(255),
@@ -75,13 +74,14 @@ $showForm = true;
     echo "Das Administratorkonto " . $admin_email . " wurde erstellt<br>";
 
     mkdir('../images/users', 0777);
-    echo 'Das benötigte Verzeichnis wurde erstellt.';
+    echo 'Das benötigte Verzeichnis wurde erstellt.<br>';
 
     $statement = 'CREATE TABLE img_list (
         img_id INT NOT NULL AUTO_INCREMENT,
         img_path VARCHAR(255),
         img_name VARCHAR(255),
         img_creator VARCHAR(255),
+        img_creator_email VARCHAR(255),
         img_type VARCHAR(255),
         uploaded_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
         PRIMARY KEY (`img_id`)
@@ -92,9 +92,9 @@ $showForm = true;
 
     echo "Die benötigten Tabellen wurden erstellt!<br>";
     $pdo = null;
-    echo "Die Verbindung zu DB wurde geschlossen";
+    echo "Die Verbindung zu DB wurde geschlossen</p>";
     $showForm = false;
-    /*}*/
+    }
 
 ?>
 

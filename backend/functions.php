@@ -99,7 +99,7 @@ function ImageGenerator()
     $img_type = 'wallpaper';
     $img_creator = 'Blurry';
     while ($index <= 10) {
-        $img_path = '../images/blurry/stock/'.$index.'.jpg';
+        $img_path = '../images/blurry/stock/' . $index . '.jpg';
         $index++;
         $statement = $pdo->prepare("INSERT INTO img_list (img_path, img_name, img_creator, img_type) VALUES (:img_path, :img_name, :img_creator, :img_type)");
         $result = $statement->execute(array('img_path' => $img_path, 'img_name' => $img_name, 'img_creator' => $img_creator, 'img_type' => $img_type));
@@ -141,6 +141,7 @@ function SessionCheck()
 function ImageUpload()
 {
 
+    $_POST['message'] = "";
     if ($_POST['img_type'] == 'wallpaper') {
         $upload_folder = '../images/users/' . $_SESSION['email'] . '/user_img/'; //Das Upload-Verzeichnis
     }
@@ -155,13 +156,13 @@ function ImageUpload()
     //Überprüfung der Dateiendung
     $allowed_extensions = array('png', 'jpg', 'jpeg', 'gif');
     if (!in_array($extension, $allowed_extensions)) {
-        return ("Ungültige Dateiendung. Nur png, jpg, jpeg und gif-Dateien sind erlaubt");
+        $_POST['message'] = "Ungültige Dateiendung. Nur png, jpg, jpeg und gif-Dateien sind erlaubt";
     }
 
     //Überprüfung der Dateigröße
     $max_size = 2560 * 1440;
     if ($_FILES['datei']['size'] > $max_size) {
-        return ("Es werden vorerst nur 2k-Bilder unterstützt");
+        $_POST['message'] = "Es werden vorerst nur 2k-Bilder unterstützt";
     }
 
     //Überprüfung dass das Bild keine Fehler enthält
@@ -169,7 +170,7 @@ function ImageUpload()
         $allowed_types = array(IMAGETYPE_PNG, IMAGETYPE_JPEG, IMAGETYPE_GIF);
         $detected_type = exif_imagetype($_FILES['datei']['tmp_name']);
         if (!in_array($detected_type, $allowed_types)) {
-            return ("Nur der Upload von Bilddateien ist gestattet");
+            $_POST['message'] = "Nur der Upload von Bilddateien ist gestattet";
         }
     }
 
@@ -189,15 +190,16 @@ function ImageUpload()
     if ($_POST['img_type'] == 'wallpaper') {
         require 'config.php';
         require 'html_prepare.php';
-
+        $message ="";
         $img_name = $_POST['img_name'];
+        $username = $_SESSION['username'];
         $email = $_SESSION['email'];
         $img_type = $_POST['img_type'];
-        $sql = "INSERT INTO img_list (img_path , img_name , img_creator, img_type) VALUES ('$new_path', '$img_name' , '$email' , '$img_type' )";
+        $sql = "INSERT INTO img_list (img_path , img_name , img_creator ,img_creator_email, img_type) VALUES ('$new_path', '$img_name' ,'$username' ,'$email' , '$img_type' )";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $pdo = null;
-        echo 'Bild erfolgreich hochgeladen: <a href="' . $new_path . '">' . $new_path . '</a><br><button type="button" name="button"><a href="' . $link_user_img_scrollsearch . '">Zurück zum Menü</a></button>';
+        $_POST['message'] = 'Bild erfolgreich hochgeladen: <a href="' . $new_path . '">' . $new_path . '</a><br><button type="button" name="button"><a href="' . $link_user_img_scrollsearch . '">Zurück zum Menü</a></button>';
         move_uploaded_file($_FILES['datei']['tmp_name'], $new_path);
     }
 
@@ -206,9 +208,10 @@ function ImageUpload()
         require 'html_prepare.php';
 
         $email = $_SESSION['email'];
-        $img_name = $email;
+        $img_name = "PB_" . $email;
+        $username = $_SESSION['username'];
         $img_type = $_POST['img_type'];
-        $sql = "INSERT INTO img_list (img_path , img_name , img_creator, img_type) VALUES ('$new_path', '$img_name' , '$email' , '$img_type' )";
+        $sql = "INSERT INTO img_list (img_path , img_name , img_creator , img_creator_email, img_type) VALUES ('$new_path', '$img_name' , '$username' ,'$email' , '$img_type' )";
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
         $sql = "UPDATE users SET profile_img_path='$new_path' WHERE email ='$email';";
@@ -233,7 +236,7 @@ function ImageScroll()
     $sql = "SELECT * from img_list WHERE img_type = 'wallpaper'";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-        
+
         while ($row = $result->fetch_assoc()) {
             echo "<div class= img_main><div class='image_inner'><img src=" . $row['img_path'] . "><br>
       <table class='img_info'>
@@ -335,6 +338,7 @@ function UserRegister()
     $passwort2 = $_POST['passwort2'];
     $vorname = $_POST['vorname'];
     $nachname = $_POST['nachname'];
+    $username = $_POST['username'];
     $_SESSION['email'] = $_POST['email'];
     $user_role = 2;
     $user_stock_img = '../images/blurry/stock_userimage.jpg';
@@ -368,8 +372,8 @@ function UserRegister()
     if (!$error) {
         $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
 
-        $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname, user_role, profile_img_path) VALUES (:email, :passwort, :vorname, :nachname,:user_role, :profile_img_path)");
-        $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname, 'user_role' => $user_role, 'profile_img_path' => $user_stock_img));
+        $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname, user_role, username , profile_img_path) VALUES (:email, :passwort, :vorname, :nachname,:user_role, :username,:profile_img_path)");
+        $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname, 'user_role' => $user_role, 'username' => $username, 'profile_img_path' => $user_stock_img));
 
         if ($result) {
             mkdir('../images/users/' . $email);

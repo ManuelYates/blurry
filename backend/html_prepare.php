@@ -11,7 +11,7 @@ if (file_exists($filename)) {
 }
 
 $font_import = '<link href="https://fonts.googleapis.com/css?family=Heebo:300&display=swap" rel="stylesheet"> ';
-$style_import = '<link rel="stylesheet" href="' . $link . 'backend/master.css">';
+$style_import = '<link rel="stylesheet" href="' . $link . 'backend/master.css"><link rel="stylesheet" href="' . $link . 'backend/media_queries.css">';
 $html_head = '<meta charset="utf-8"><title>BLURRY</title>' . $font_import . $style_import;
 
 

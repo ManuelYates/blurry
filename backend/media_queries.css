@@ -1,0 +1,59 @@
+@media only screen and (max-width: 1000px) {
+    #AdminiFrame {
+        height: 100%;
+    }
+    #UserInfoHeader h4 {
+        text-align: right;
+        color: #081B33;
+    }
+    #UserInfoHeader ul {
+        list-style: none;
+        text-align: right;
+        font-size: small;
+    }
+    #UserInfoHeader img {
+        display: none;
+        height: 50px;
+        border-radius: 20px;
+        float: left;
+    }
+    #content_user_index {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #content_user_index button {
+        width: 100%;
+        height: 200px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        background-color: #767D92;
+        border-radius: 0px;
+        transition-duration: 0.4s;
+        border: solid #767D92;
+    }
+    #content_user_index button:hover {
+        cursor: pointer;
+        background-color: #767D92;
+        color: white;
+        border: solid #767D92;
+        border-width: 1px;
+        border-radius: 0px;
+        box-shadow: 0 5px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
+    .table_upload {
+        display: none;
+    }
+    .table_upload_mobile {
+        display: table;
+        width: 100%;
+        height: 50%;
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        border: solid #767D92;
+        border-width: 0px;
+        border-radius: 0px;
+        background-color: #767D92;
+    }
+}
