@@ -29,21 +29,26 @@ function AdminDeleteUser($email)
 
 function AdminUserList()
 {
+    //Verbindung herstellen    
     $conn = mysqli_connect("localhost", "root", "", "blurry");
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    $email = $_SESSION['email'];
+    //Alle User nehmen, welche die Nutzerrolle 2, also nicht Administratoren sind
     $sql = "SELECT * from users WHERE user_role = 2";
+    //Statement ausführen
     $result = $conn->query($sql);
+    //Wenn das Ergebnis mehr als 0 Ergebnisse gibt
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
+            //diese als tabelle ausgeben
             echo '<form action="?user_delete=1" method="post"><tr><td><img name="img_path" src=' . $row["profile_img_path"] . '></td><td>' . $row["vorname"] . ' ' . $row["nachname"] . '</td><td name="email"><input readonly name="email" value="' . $row["email"] . '"></td><td>' . $row['created_at'] . '</td><td><input type="submit"  value="User Löschen"/></td></tr></form>';
         }
     } else {
+        //Wenn nicht
         echo "<h1>Kein Eintrag gefunden</h1>";
     }
-
+    //Verbindung schließen
     $conn->close();
 }
 
@@ -51,30 +56,38 @@ function AdminUserList()
 
 function AdminImageScroll()
 {
+    //Verbindung herstellen    
     $conn = mysqli_connect("localhost", "root", "", "blurry");
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    $email = $_SESSION['email'];
+    //Alle Einträge der BilderDB, welche als Wallpaper markiert sind
     $sql = "SELECT * from img_list WHERE img_type = 'wallpaper'";
+    //Statement ausführen
     $result = $conn->query($sql);
+    //Wenn das Ergebnis mehr als 0 Ergebnisse gibt
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
+            //diese als tabelle ausgeben
             echo '<form action="?image_delete=1" method="post"><tr><td><img name="img_path" src=' . $row["img_path"] . '></td><td><input name="img_path" value="' . $row["img_path"] . '"></td><td>' . $row["img_name"] . '</td><td>' . $row["img_creator"] . '</td><td>' . $row['uploaded_at'] . '</td><td><input name="img_id" value="' . $row['img_id'] . '"></td><td><input type="submit" name="image_delete(' . $row['img_id'] . ')" value="Bild Löschen"/></td></tr></form>';
         }
     } else {
+        //Wenn nicht
         echo "<h1>Kein Eintrag gefunden</h1>";
     }
-
+    //Verbindung schließen
     $conn->close();
 }
 
+
+//Eine Funktion die 10 User in die Datenbank schreibt, um zu testen ob das User-Management funktioniert
 function UserGenerator()
 {
     require 'config.php';
     require 'html_prepare.php';
     $index = 1;
     while ($index <= 10) {
+        //Willkürliche Benutzerdaten
         $username = "Benutzer" . $index;
         $email = "test" . $index . "@blurry.de";
         $vorname = "Hans Günther";
@@ -82,14 +95,20 @@ function UserGenerator()
         $passwort = "admin";
         $user_role = '2';
         $profile_img_path = '../images/blurry/stock_userimage.jpg';
+        //index + 1
         $index++;
+        //hashen des Passworts
         $passwort_hash = password_hash($passwort, PASSWORD_DEFAULT);
+        //Statement vorbereiten, welches die Werte in die Tabelle eintragen soll
         $statement = $pdo->prepare("INSERT INTO users (email, passwort, vorname, nachname, user_role, profile_img_path) VALUES (:email, :passwort, :vorname, :nachname,:user_role, :profile_img_path)");
+        //Ausführen
         $result = $statement->execute(array('email' => $email, 'passwort' => $passwort_hash, 'vorname' => $vorname, 'nachname' => $nachname, 'user_role' => $user_role, 'profile_img_path' => $profile_img_path));
     }
+    //Verbindung schließen
     $pdo = null;
 }
 
+// Funktion die 10 voreingestellte Bilder in die Datenbank schreibt um so das Bilder Management zu testen
 function ImageGenerator()
 {
     require 'config.php';
@@ -100,10 +119,12 @@ function ImageGenerator()
     $img_creator = 'Blurry';
     while ($index <= 10) {
         $img_path = '../images/blurry/stock/' . $index . '.jpg';
+        //index + 1
         $index++;
         $statement = $pdo->prepare("INSERT INTO img_list (img_path, img_name, img_creator, img_type) VALUES (:img_path, :img_name, :img_creator, :img_type)");
         $result = $statement->execute(array('img_path' => $img_path, 'img_name' => $img_name, 'img_creator' => $img_creator, 'img_type' => $img_type));
     }
+    //Verbindung schließen
     $pdo = null;
 }
 
@@ -115,12 +136,15 @@ function SessionCheck()
     $url = (empty($_SERVER['HTTPS'])) ? 'http' : 'https';
     $url .= $_SERVER['HTTP_HOST'];
     $url .= $_SERVER['REQUEST_URI'];
+    //Wenn der user auf seiner Profilseite ist, soll das Menü oben rechts ausgeblendet werden
     if ($url == 'httplocalhost/blurry/user/user_profile_page.php') {
         if (isset($_SESSION['vorname'])) {
         } else {
+            //Falls der User noch nicht angemeldet ist
             echo '<div id="UserInfoHeader">Sie sind noch nicht eingelogt. <br>Hier geht es zum <a href="' . $link_user_login . '">Login</a></div>';
         }
     } else {
+        //Das Menü oben rechts auf der Seite
         if (isset($_SESSION['vorname'])) {
             echo '<div id="UserInfoHeader">
             <img src=' . $_SESSION["profile_img_path"] . '> 
@@ -190,14 +214,16 @@ function ImageUpload()
     if ($_POST['img_type'] == 'wallpaper') {
         require 'config.php';
         require 'html_prepare.php';
-        $message ="";
+        $message = "";
         $img_name = $_POST['img_name'];
         $username = $_SESSION['username'];
         $email = $_SESSION['email'];
         $img_type = $_POST['img_type'];
         $sql = "INSERT INTO img_list (img_path , img_name , img_creator ,img_creator_email, img_type) VALUES ('$new_path', '$img_name' ,'$username' ,'$email' , '$img_type' )";
         $stmt = $pdo->prepare($sql);
+        //Ausführen des Statements
         $stmt->execute();
+        //Verbindung schließen
         $pdo = null;
         $_POST['message'] = 'Bild erfolgreich hochgeladen: <a href="' . $new_path . '">' . $new_path . '</a><br><button type="button" name="button"><a href="' . $link_user_img_scrollsearch . '">Zurück zum Menü</a></button>';
         move_uploaded_file($_FILES['datei']['tmp_name'], $new_path);
